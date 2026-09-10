@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Patient Record</title>
+        <link rel="stylesheet" href="/static/style.css"
+    </head>
+    <body>
+        <h2>{{ patient['name'] }} - Age: {{ patient['age'] }}, Gender: {{ patient['gender'] }}</h2>
+        <p>Phone: {{ patient['phone'] }}</p>
+
+        <a href="/case_form/{{ patient['id'] }}">+ Add New Case Entry</a>
+
+        <h3>Case History</h3>
+        {% if records|length == 0 %}
+           <p>No case records yet.</p>
+        {% else %}
+            {% for s in summaries %}
+            <p><strong>Summary:</strong> {{ s }}</p>
+            {% endfor %}
+        {% endif %}    
+    </body>
+</html>

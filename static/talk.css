@@ -1,0 +1,65 @@
+.talk-section {
+    text-align: center;
+    padding: 56px 24px;
+}
+
+#talk-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 26px;
+    font-weight: 500;
+    color: #14524F;
+    margin-bottom: 8px;
+}
+
+#talk-subtitle {
+    font-size: 14px;
+    color: #5F6B67;
+    margin-bottom: 40px;
+}
+
+.mic-box {
+    margin-bottom: 40px;
+}
+
+#mic-btn {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    border: none;
+    background-color: #E8735A;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+#mic-btn:hover {
+    background-color: #d4623f;
+}
+
+#mic-status {
+    font-size: 13px;
+    color: #5F6B67;
+    margin-top: 12px;
+}
+
+.transcript-box {
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: #FFFFFF;
+    border: 1px solid #E4E8E6;
+    border-radius: 12px;
+    padding: 24px;
+    text-align: left;
+}
+
+.transcript-box h3 {
+    font-size: 14px;
+    font-weight: 500;
+    color: #14524F;
+    margin-bottom: 10px;
+}
+
+#transcript-text {
+    font-size: 13px;
+    color: #9AA39F;
+}

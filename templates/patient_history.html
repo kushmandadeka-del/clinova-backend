@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Patient History</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='patihis.css') }}">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+
+        <div class="logo">
+            Clinova
+        </div>
+
+        <div class="nav-links">
+            <a href="{{ url_for('home') }}">Dashboard</a>
+            <a href="{{ url_for('appointments') }}">Appointments</a>
+        </div>
+
+    </nav>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="container">
+
+        <!-- PAGE TITLE -->
+        <div class="page-header">
+
+            <div>
+                <h1>Patient History</h1>
+                <p>View and manage previous medical records</p>
+            </div>
+
+        </div>
+
+
+        <!-- SEARCH PATIENT -->
+        <section class="search-box">
+
+            <label for="patient-search">
+                Search Patient
+            </label>
+
+            <div class="search-row">
+
+                <input
+                    type="text"
+                    id="patient-search"
+                    placeholder="Enter Patient ID or Name"
+                >
+
+                <button type="button">
+                    Search
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- PATIENT INFORMATION -->
+        <section class="patient-info">
+
+            <div class="patient-icon">
+                👤
+            </div>
+
+            <div class="patient-details">
+
+                <h2>Patient Information</h2>
+
+                <div class="info-grid">
+
+                    <div>
+                        <span>Patient ID</span>
+                        <strong>—</strong>
+                    </div>
+
+                    <div>
+                        <span>Name</span>
+                        <strong>—</strong>
+                    </div>
+
+                    <div>
+                        <span>Age</span>
+                        <strong>—</strong>
+                    </div>
+
+                    <div>
+                        <span>Gender</span>
+                        <strong>—</strong>
+                    </div>
+
+                    <div>
+                        <span>Blood Group</span>
+                        <strong>—</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- HISTORY -->
+        <section class="history-container">
+
+            <div class="history-header">
+
+                <div>
+                    <h2>Medical History</h2>
+                    <p>All previous medical records</p>
+                </div>
+
+                <select>
+                    <option>All Records</option>
+                    <option>Appointments</option>
+                    <option>Diagnosis</option>
+                    <option>Lab Tests</option>
+                    <option>Prescriptions</option>
+                </select>
+
+            </div>
+
+
+            <!-- RECORD 1 -->
+            <div class="history-record">
+
+                <div class="record-date">
+                    <span>DATE</span>
+                </div>
+
+                <div class="record-content">
+
+                    <div class="record-heading">
+
+                        <h3>Record Type</h3>
+
+                        <span class="status">
+                            Completed
+                        </span>
+
+                    </div>
+
+                    <p>
+                        <strong>Doctor:</strong>
+                        —
+                    </p>
+
+                    <p>
+                        <strong>Diagnosis:</strong>
+                        —
+                    </p>
+
+                    <div class="record-box">
+
+                        <strong>Prescription</strong>
+
+                        <p>
+                            No prescription information available.
+                        </p>
+
+                    </div>
+
+                    <div class="record-box">
+
+                        <strong>Notes</strong>
+
+                        <p>
+                            No additional information available.
+                        </p>
+
+                    </div>
+
+                    <button class="view-btn">
+                        View Details
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- RECORD 2 -->
+            <div class="history-record">
+
+                <div class="record-date">
+                    <span>DATE</span>
+                </div>
+
+                <div class="record-content">
+
+                    <div class="record-heading">
+
+                        <h3>Record Type</h3>
+
+                        <span class="status">
+                            Completed
+                        </span>
+
+                    </div>
+
+                    <p>
+                        <strong>Doctor:</strong>
+                        —
+                    </p>
+
+                    <p>
+                        <strong>Diagnosis:</strong>
+                        —
+                    </p>
+
+                    <div class="record-box">
+
+                        <strong>Test / Report</strong>
+
+                        <p>
+                            No test information available.
+                        </p>
+
+                    </div>
+
+                    <button class="view-btn">
+                        View Details
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- EMPTY STATE -->
+            <div class="empty-history">
+
+                <div class="empty-icon">
+                    📋
+                </div>
+
+                <h3>No Records Found</h3>
+
+                <p>
+                    Patient medical history will appear here
+                    when records are available.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>
+

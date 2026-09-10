@@ -1,0 +1,77 @@
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #F7F9F8;
+}
+
+
+/* Login Heading */
+h2 {
+    text-align: center;
+    color: #14524F;
+    font-size: 28px;
+    font-weight: 500;
+    margin-top: 100px;
+    margin-bottom: 30px;
+}
+
+
+/* Login Card */
+form {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #FFFFFF;
+    padding: 35px;
+    border: 1px solid #E4E8E6;
+    border-radius: 12px;
+}
+
+
+/* Label */
+label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #14524F;
+    margin-bottom: 8px;
+}
+
+
+/* Username Input */
+input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px;
+    border: 1px solid #D8DEDB;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+/* When Input is Selected */
+input:focus {
+    outline: none;
+    border-color: #14524F;
+}
+
+
+/* Login Button */
+button {
+    width: 100%;
+    margin-top: 25px;
+    padding: 13px;
+    border: none;
+    border-radius: 8px;
+    background-color: #E8735A;
+    color: white;
+    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+}
+
+
+/* Hover Effect */
+button:hover {
+    background-color: #D4623F;
+}

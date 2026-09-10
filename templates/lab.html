@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lab Test at Home</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='lab.css') }}">
+
+</head>
+
+
+<body>
+
+
+    <div class="navbar">
+
+        <div id="logo"></div>
+
+        <div id="tagline">
+            <h1>Lab Test at Home</h1>
+        </div>
+
+    </div>
+
+
+
+    <div class="lab-container">
+
+
+        <h1>Book Your Lab Test From Home</h1>
+
+        <p>
+            Schedule diagnostic tests and get sample collection from your home.
+        </p>
+
+
+
+        <div class="lab-form">
+
+
+            <label>Patient Name</label>
+
+            <input
+                type="text"
+                placeholder="Enter your name"
+            >
+
+
+
+            <label>Phone Number</label>
+
+            <input
+                type="tel"
+                placeholder="Enter phone number"
+            >
+
+
+
+            <label>Home Address</label>
+
+            <textarea
+                placeholder="Enter your address"
+            ></textarea>
+
+
+
+            <label>Select Test</label>
+
+            <select>
+
+                <option>Blood Test</option>
+                <option>Diabetes Test</option>
+                <option>Thyroid Test</option>
+                <option>Full Body Checkup</option>
+                <option>Vitamin Test</option>
+
+            </select>
+
+
+
+            <label>Select Date</label>
+
+            <input type="date">
+
+
+            <button>Book Lab Test</button>
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+</body>
+
+</html>

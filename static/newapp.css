@@ -1,0 +1,230 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7f9;
+    color: #333;
+}
+
+/* Navbar */
+.navbar {
+    height: 65px;
+    width: 100%;
+    background-color: #1d5d75;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 40px;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: bold;
+    color: white;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+
+/* Main container */
+.container {
+    width: 90%;
+    max-width: 850px;
+    margin: 40px auto;
+}
+
+
+/* Page heading */
+.page-header {
+    margin-bottom: 25px;
+}
+
+.page-header h1 {
+    color: #1d5d75;
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.page-header p {
+    color: #777;
+    font-size: 16px;
+}
+
+
+/* Form */
+.appointment-form {
+    background-color: white;
+    padding: 35px;
+    height: 800px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+
+/* Form group */
+.form-group {
+    /* display: flex;
+    flex-direction: column; */
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #444;
+}
+
+
+/* Inputs */
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+
+    border: 1px solid #ccc;
+    border-radius: 6px;
+
+    font-size: 15px;
+    font-family: Arial, sans-serif;
+
+    outline: none;
+}
+
+
+/* Focus effect */
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #1d8aa8;
+    box-shadow: 0 0 4px rgba(29, 138, 168, 0.2);
+}
+
+
+/* Date + Time in same row */
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+
+/* Textarea */
+textarea {
+    resize: vertical;
+}
+
+
+/* Buttons */
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+
+    margin-top: 25px;
+}
+
+.cancel-btn,
+.save-btn {
+    padding: 12px 22px;
+
+    border-radius: 6px;
+
+    font-size: 15px;
+    text-decoration: none;
+
+    cursor: pointer;
+}
+
+
+/* Cancel */
+.cancel-btn {
+    background-color: #e5e5e5;
+    color: #333;
+}
+
+.cancel-btn:hover {
+    background-color: #d5d5d5;
+}
+
+
+/* Book appointment */
+.save-btn {
+    background-color: #1d8aa8;
+    color: white;
+
+    border: none;
+}
+
+.save-btn:hover {
+    background-color: #156b83;
+}
+
+
+/* Mobile */
+@media (max-width: 600px) {
+
+    .navbar {
+        padding: 0 20px;
+    }
+
+    .nav-links {
+        gap: 12px;
+    }
+
+    .nav-links a {
+        font-size: 13px;
+    }
+
+    .container {
+        width: 94%;
+        margin: 25px auto;
+    }
+
+    .appointment-form {
+        padding: 22px;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .page-header h1 {
+        font-size: 26px;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .cancel-btn,
+    .save-btn {
+        text-align: center;
+        width: 100%;
+    }
+}

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>New Appointment</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='newapp.css') }}">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">Clinova</div>
+
+        <div class="nav-links">
+            <a href="{{ url_for('dashboard') }}">Dashboard</a>
+            <a href="{{ url_for('appointments') }}">Appointments</a>
+        </div>
+    </nav>
+
+
+    <!-- Main Content -->
+    <main class="container">
+
+        <div class="page-header">
+            <h1>New Appointment</h1>
+            <p>Schedule an appointment for a patient</p>
+        </div>
+
+
+        <!-- Appointment Form -->
+        <form method="POST" class="appointment-form">
+
+            <div class="form-group">
+                <label for="patient">Patient</label>
+
+                <select id="patient" name="patient_id" required>
+                    <option value="">Select Patient</option>
+
+                    {% for patient in patients %}
+                        <option value="{{ patient['id'] }}">
+                            {{ patient['name'] }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+
+            <div class="form-group">
+                <label for="doctor">Doctor</label>
+
+                <select id="doctor" name="doctor_id" required>
+                    <option value="">Select Doctor</option>
+
+                    {% for doctor in doctors %}
+                        <option value="{{ doctor['id'] }}">
+                            {{ doctor['name'] }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+
+            <div class="form-row">
+
+                <div class="form-group">
+                    <label for="date">Appointment Date</label>
+
+                    <input
+                        type="date"
+                        id="date"
+                        name="appointment_date"
+                        required
+                    >
+                </div>
+
+
+                <div class="form-group">
+                    <label for="Hospital">Select Hospital</label>
+
+                    <select id="type" name="Hospital-name">
+                    <option value="">Select Type</option>
+                    <option value="H1">
+                        H1
+                    </option>
+                    <option value="H2">
+                        H2
+                    </option>
+                    <option value="H3">
+                        H3
+                    </option>
+                    <option value="H4">
+                        H4
+                    </option>
+                    <option value="H5">
+                        H5
+                    </option>
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+                <label for="type">Appointment Type</label>
+
+                <select id="type" name="appointment_type" required>
+                    <option value="">Select Type</option>
+                    <option value="General Consultation">
+                        General Consultation
+                    </option>
+                    <option value="Follow-up">
+                        Follow-up
+                    </option>
+                    <option value="Emergency">
+                        Emergency
+                    </option>
+                    <option value="Check-up">
+                        Check-up
+                    </option>
+                    <option value="Lab Test">
+                        Lab Test
+                    </option>
+                </select>
+            </div>
+
+
+            <div class="form-group">
+                <label for="reason">Reason for Visit</label>
+
+                <textarea
+                    id="reason"
+                    name="reason"
+                    rows="4"
+                    placeholder="Enter reason for appointment..."
+                ></textarea>
+            </div>
+
+
+            <div class="form-actions">
+                <a href="/appointments" class="cancel-btn">
+                    Cancel
+                </a>
+
+                <button type="submit" class="save-btn">
+                    Book Appointment
+                </button>
+            </div>
+
+        </form>
+
+    </main>
+
+</body>
+</html>

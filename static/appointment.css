@@ -1,0 +1,156 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Page Background */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fb;
+    min-height: 100vh;
+    color: #333;
+}
+
+
+/* Main Container */
+.appointments-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 40px auto;
+}
+
+
+/* Patient Sections */
+.patient-section {
+    background-color: white;
+    margin-bottom: 35px;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+
+/* Section Titles */
+.patient-section h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+
+/* Pending Patients Title */
+#pending-title {
+    color: #e67e22;
+}
+
+
+/* Seen Patients Title */
+#seen-title {
+    color: #27ae60;
+}
+
+
+/* Table */
+.patient-table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+
+/* Table Header */
+.table-header {
+    background-color: #1f3c88;
+    color: white;
+}
+
+.table-header th {
+    padding: 14px;
+    text-align: left;
+    font-size: 15px;
+}
+
+
+/* Table Rows */
+.patient-row {
+    border-bottom: 1px solid #e5e5e5;
+    transition: 0.3s;
+}
+
+.patient-row:hover {
+    background-color: #f1f5ff;
+}
+
+
+/* Table Data */
+.patient-row td {
+    padding: 15px 14px;
+    font-size: 15px;
+}
+
+
+/* Buttons */
+.action-btn {
+    text-decoration: none;
+    padding: 9px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    display: inline-block;
+    transition: 0.3s;
+}
+
+
+/* Take Case Button */
+.take-case-btn {
+    background-color: #e67e22;
+    color: white;
+}
+
+.take-case-btn:hover {
+    background-color: #cf6d17;
+    transform: translateY(-2px);
+}
+
+
+/* View Record Button */
+.view-record-btn {
+    background-color: #27ae60;
+    color: white;
+}
+
+.view-record-btn:hover {
+    background-color: #1e8c4c;
+    transform: translateY(-2px);
+}
+
+
+/* Responsive Design */
+@media (max-width: 600px) {
+
+    .appointments-container {
+        width: 95%;
+        margin: 20px auto;
+    }
+
+    .patient-section {
+        padding: 15px;
+    }
+
+    .patient-table {
+        font-size: 13px;
+    }
+
+    .patient-row td,
+    .table-header th {
+        padding: 10px 6px;
+    }
+
+    .action-btn {
+        padding: 7px 10px;
+        font-size: 12px;
+    }
+}

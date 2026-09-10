@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Case History Form</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='caseform.css') }}">
+    </head>
+    <body>
+        <h2>Case History Form</h2>
+        <form method="POST">
+            <label>Symptoms</label>
+            <textarea name="symptoms" rows="3"></textarea>
+
+            <label>Medical History</label>
+            <textarea name="medical_history" rows="3"></textarea>
+            <label>Vital signs</label>
+            <input type="text" name="vitals">
+            <label>Current Medications</label>
+            <textarea name="medications" rows="3"></textarea>
+            <label>Allergies</label>
+            <input type="text" name="allergies">
+            <button type="submit">Save Case Record</button>
+        </form>
+    </body>
+</html>

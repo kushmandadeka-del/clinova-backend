@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Registration - Clinova</title>
+    <link rel="stylesheet" href="dr_register.css">
+</head>
+
+<body> <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">Clinova</div>
+        <div class="nav-links"> <a href="index.html">Home</a> <a href="dr-login.html">Doctor Login</a> </div>
+    </nav> <!-- Registration Container -->
+    <div class="container">
+        <div class="page-header">
+            <h1>Doctor Registration</h1>
+            <p>Create your Clinova doctor account</p>
+        </div> <!-- Registration Form -->
+        <form class="register-form"> <!-- Doctor Name -->
+            <div class="form-group"> <label for="doctor-name">Full Name</label> <input type="text" id="doctor-name"
+                    name="doctor-name" placeholder="Dr. John Doe" required> </div> <!-- Medical Registration Number -->
+            <div class="form-group"> <label for="registration-number"> Medical Registration Number </label> <input
+                    type="text" id="registration-number" name="registration-number"
+                    placeholder="Enter registration number" required> </div> <!-- Specialization -->
+            <div class="form-group"> <label for="specialization">Specialization</label> <select id="specialization"
+                    name="specialization" required>
+                    <option value="">Select Specialization</option>
+                    <option value="general">General Physician</option>
+                    <option value="cardiology">Cardiology</option>
+                    <option value="neurology">Neurology</option>
+                    <option value="dermatology">Dermatology</option>
+                    <option value="orthopedics">Orthopedics</option>
+                    <option value="pediatrics">Pediatrics</option>
+                    <option value="gynecology">Gynecology</option>
+                    <option value="psychiatry">Psychiatry</option>
+                    <option value="dentist">Dentistry</option>
+                    <option value="other">Other</option>
+                </select> </div> <!-- Hospital -->
+            <div class="form-group"> <label for="hospital">Hospital</label> <select id="hospital" name="hospital"
+                    required>
+                    <option value="">Select Hospital</option>
+                    <option value="H1">H1</option>
+                    <option value="H2">H2</option>
+                    <option value="H3">H3</option>
+                    <option value="H4">H4</option>
+                    <option value="H5">H5</option>
+                </select> </div> <!-- Phone -->
+            <div class="form-group"> <label for="phone">Phone Number</label> <input type="tel" id="phone" name="phone"
+                    placeholder="Enter phone number" required> </div> <!-- Email -->
+            <div class="form-group"> <label for="email">Email Address</label> <input type="email" id="email"
+                    name="email" placeholder="doctor@example.com" required> </div> <!-- Password -->
+            <div class="form-group"> <label for="password">Create Password</label> <input type="password" id="password"
+                    name="password" placeholder="Create a password" required> </div> <!-- Confirm Password -->
+            <div class="form-group"> <label for="confirm-password">Confirm Password</label> <input type="password"
+                    id="confirm-password" name="confirm-password" placeholder="Confirm your password" required> </div>
+            <!-- Terms -->
+            <div class="terms"> <input type="checkbox" id="terms" required> <label for="terms"> I confirm that the
+                    information provided is correct. </label> </div> <!-- Button --> <button type="submit"
+                class="register-btn"> Register as Doctor </button> <!-- Login -->
+            <p class="login-text"> Already have an account? <a href="dr-login.html">Login here</a> </p>
+        </form>
+    </div>
+</body>
+
+</html>

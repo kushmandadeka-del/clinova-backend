@@ -1,0 +1,79 @@
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #F7F9F8;
+}
+
+
+/* Page Heading */
+h2 {
+    text-align: center;
+    color: #14524F;
+    font-size: 28px;
+    font-weight: 500;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+
+/* Form Container */
+form {
+    max-width: 450px;
+    margin: 0 auto;
+    background-color: #FFFFFF;
+    padding: 35px;
+    border: 1px solid #E4E8E6;
+    border-radius: 12px;
+}
+
+
+/* Labels */
+label {
+    display: block;
+    font-size: 14px;
+    color: #14524F;
+    margin-bottom: 8px;
+    margin-top: 18px;
+}
+
+
+/* Inputs and Select */
+input,
+select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px;
+    border: 1px solid #D8DEDB;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #333;
+    background-color: #FFFFFF;
+}
+
+
+/* When user clicks an input */
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #14524F;
+}
+
+
+/* Register Button */
+button {
+    width: 100%;
+    margin-top: 30px;
+    padding: 13px;
+    border: none;
+    border-radius: 8px;
+    background-color: #E8735A;
+    color: white;
+    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+}
+
+
+button:hover {
+    background-color: #D4623F;
+}

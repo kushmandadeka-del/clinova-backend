@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Generic Medicine</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='gen.css') }}">
+
+</head>
+
+<body>
+
+
+    <div class="navbar">
+
+        <div id="logo"></div>
+
+        <div id="tagline">
+            <h1>Generic Medicines</h1>
+        </div>
+
+    </div>
+
+
+    <div class="generic-container">
+
+        <h1>Affordable Generic Medicines</h1>
+
+        <p>
+            Find cost-effective alternatives to branded medicines.
+        </p>
+
+
+        <div class="medicine-search">
+
+            <input
+                type="text"
+                placeholder="Search medicine name..."
+            >
+
+            <button>Search</button>
+
+        </div>
+
+
+        <div class="medicine-list">
+
+
+            <div class="medicine-card">
+
+                <h2>Search by Medicine</h2>
+
+                <p>
+                    Enter the name of your prescribed medicine.
+                </p>
+
+                <button>Search Medicine</button>
+
+            </div>
+
+
+            <div class="medicine-card">
+
+                <h2>Compare Prices</h2>
+
+                <p>
+                    Compare branded and generic medicine prices.
+                </p>
+
+                <button>Compare</button>
+
+            </div>
+
+
+            <div class="medicine-card">
+
+                <h2>Find Alternatives</h2>
+
+                <p>
+                    Discover affordable generic alternatives.
+                </p>
+
+                <button>Find Alternative</button>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <div class="footer">
+
+        <p>© 2024 Hospice. All rights reserved.</p>
+
+    </div>
+
+
+</body>
+
+</html>

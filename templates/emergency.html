@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='emergency.css') }}">
+</head>
+<body>
+    <div class="emergency-section">
+        <h1 id="emergency-title">Emergency</h1>
+        <p id="emergency-subtitle">If this is life-threatening, call for help immediately</p>
+
+        <a href="tel:108" class="call-btn">Call ambulance — 108</a>
+
+        <div class="emergency-grid">
+            <a href="tel:102" class="emergency-card">
+                <h3>Ambulance (non-critical)</h3>
+                <p>102</p>
+            </a>
+            <a href="tel:100" class="emergency-card">
+                <h3>Police</h3>
+                <p>100</p>
+            </a>
+            <a href="tel:101" class="emergency-card">
+                <h3>Fire</h3>
+                <p>101</p>
+            </a>
+            <a href="#" class="emergency-card">
+                <h3>Your emergency contact</h3>
+                <p id="contact-placeholder">Not added yet</p>
+            </a>
+        </div>
+
+        <div class="quick-actions">
+            <a href="#" class="quick-action">Notify my doctor</a>
+            <a href="#" class="quick-action">Share my location</a>
+            <a href="#" class="quick-action">View my medical ID</a>
+        </div>
+    </div>
+</body>
+</html>

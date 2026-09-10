@@ -1,0 +1,383 @@
+from flask import Flask, render_template, request, redirect, url_for, session
+import sqlite3
+import os 
+from datetime import datetime
+
+app=Flask(__name__)
+app.secret_key= "hackathon-secret-key-change-me"
+
+DB_Path = os.path.join(os.path.dirname(__file__), "database.db")
+
+
+def get_db():
+    conn = sqlite3.connect(DB_Path)
+    conn.row_factory = sqlite3.Row
+    return conn
+
+def init_db():
+    conn = get_db()
+    c = conn.cursor()
+
+    c.execute("""CREATE TABLE IF NOT EXISTS users(id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT UNIQUE NOT NULL,
+    password TEXT NOT NULL,
+    role TEXT NOT NULL)""")
+
+    c.execute("""CREATE TABLE IF NOT EXISTS patients(id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    age INTEGER,
+    gender TEXT,phone TEXT,
+    created_at TEXT)""")
+
+    c.execute("""CREATE TABLE IF NOT EXISTS case_records(id INTEGER PRIMARY KEY AUTOINCREMENT,
+      patient_id INTEGER NOT NULL,
+      symptoms TEXT,
+    medical_history TEXT,
+    vitals TEXT, medications TEXT,
+    allergies TEXT,
+      created_at TEXT,
+      FOREIGN KEY(patient_id) REFERENCES patients(id))""")
+
+    c.execute("SELECT COUNT(*) FROM users")
+    if c.fetchone()[0]==0:
+        c.execute("INSERT INTO users(username, password, role) VALUES (?, ?, ?)", ("staff1", "staff123", "staff"))
+
+        c.execute("INSERT INTO users (username, password, role) VALUES (?, ?, ?)", ("doctor1", "doctor123", "doctor"))
+
+    conn.commit()
+    conn.close()
+
+@app.route("/")
+def home():
+    return render_template("index.html")
+
+
+@app.route("/dashboard")
+def dashboard():
+    search = request.args.get("search", "")
+
+    conn = get_db()
+
+    if search:
+        patients = conn.execute(
+            "SELECT * FROM patients WHERE name LIKE ? ORDER BY created_at DESC",
+            (f"%{search}%",)
+        ).fetchall()
+    else:
+        patients = conn.execute(
+            "SELECT * FROM patients ORDER BY created_at DESC"
+        ).fetchall()
+
+    conn.close()
+
+    return render_template(
+        "dashboard.html",
+        patients=patients,
+        search=search
+    )
+
+
+@app.route("/register_patient", methods=["GET", "POST"])
+def register_patient():
+
+    if request.method == "POST":
+
+        name = request.form["name"]
+        age = request.form["age"]
+        gender = request.form["gender"]
+        phone = request.form["phone"]
+
+        conn = get_db()
+
+        conn.execute(
+            """
+            INSERT INTO patients
+            (name, age, gender, phone, created_at)
+            VALUES (?, ?, ?, ?, ?)
+            """,
+            (
+                name,
+                age,
+                gender,
+                phone,
+                datetime.now().strftime("%Y-%m-%d %H:%M")
+            )
+        )
+
+        conn.commit()
+        conn.close()
+
+        return redirect(url_for("dashboard"))
+
+    return render_template("register_patient.html")
+
+
+@app.route("/appointments")
+def appointments():
+
+    conn = get_db()
+
+    patients = conn.execute(
+        "SELECT * FROM patients ORDER BY created_at DESC"
+    ).fetchall()
+
+    pending = []
+    seen = []
+
+    for p in patients:
+
+        record = conn.execute(
+            "SELECT COUNT(*) FROM case_records WHERE patient_id = ?",
+            (p["id"],)
+        ).fetchone()
+
+        if record[0] == 0:
+            pending.append(p)
+        else:
+            seen.append(p)
+
+    conn.close()
+
+    return render_template(
+        "appointments.html",
+        pending=pending,
+        seen=seen
+    )
+
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+
+    if request.method == "POST":
+
+        username = request.form["username"]
+        password = request.form["password"]
+
+        conn = get_db()
+
+        user = conn.execute(
+            """
+            SELECT * FROM users
+            WHERE username = ? AND password = ?
+            """,
+            (username, password)
+        ).fetchone()
+
+        conn.close()
+
+        if user:
+
+            session["user_id"] = user["id"]
+            session["username"] = user["username"]
+            session["role"] = user["role"]
+
+            return redirect(url_for("dashboard"))
+
+        return render_template(
+            "login.html",
+            error="Invalid username or password"
+        )
+
+    return render_template("login.html")
+
+
+@app.route("/doctor_login", methods=["GET", "POST"])
+def doctor_login():
+
+    if request.method == "POST":
+
+        username = request.form["username"]
+        password = request.form["password"]
+
+        conn = get_db()
+
+        user = conn.execute(
+            """
+            SELECT * FROM users
+            WHERE username = ?
+            AND password = ?
+            AND role = 'doctor'
+            """,
+            (username, password)
+        ).fetchone()
+
+        conn.close()
+
+        if user:
+
+            session["user_id"] = user["id"]
+            session["username"] = user["username"]
+            session["role"] = user["role"]
+
+            return redirect(url_for("appointments"))
+
+        return render_template(
+            "doctor_login.html",
+            error="Invalid username or password"
+        )
+
+    return render_template("doctor_login.html")
+
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        username = request.form["username"]
+        password = request.form["password"]
+
+        conn = get_db()
+        user = conn.execute(
+            "SELECT * FROM users WHERE username = ? AND password = ?",
+            (username, password)
+        ).fetchone()
+        conn.close()
+
+        if user:
+            session["user_id"] = user["id"]
+            session["username"] = user["username"]
+            session["role"] = user["role"]
+            return redirect(url_for("dashboard"))
+        else:
+            return render_template("login.html", error="Invalid username or password")
+
+    return render_template("login.html")  
+
+
+@app.route("/doctor_login", methods=["GET", "POST"])
+def doctor_login():
+    if request.method == "POST":
+        username = request.form["username"]
+        password = request.form["password"]
+
+        conn = get_db()
+        user = conn.execute(
+            "SELECT * FROM users WHERE username = ? AND password = ? AND role = 'doctor'",
+            (username, password)
+        ).fetchone()
+        conn.close()
+
+        if user:
+            session["user_id"] = user["id"]
+            session["username"] = user["username"]
+            session["role"] = user["role"]
+            return redirect(url_for("appointments"))
+        else:
+            return render_template("doctor_login.html", error="Invalid username or password")
+
+    return render_template("doctor_login.html")    
+        
+        
+
+
+@app.route("/appointments")
+def appointments():
+    conn = get_db()
+    patients = conn.execute("SELECT * FROM patients ORDER BY created_at DESC").fetchall()
+
+    pending = []
+    seen = []
+    for p in patients:
+        record = conn.execute(
+            "SELECT COUNT(*) FROM case_records WHERE patient_id = ?", (p['id'],)
+        ).fetchone()
+        if record[0] == 0:
+            pending.append(p)
+        else:
+            seen.append(p)
+
+    conn.close()
+    return render_template("appointments.html", pending=pending, seen=seen)            
+
+
+@app.route("/register_patient", methods=["GET", "POST"])
+def register_patient():
+    if request.method == "POST":
+        name = request.form["name"]
+        age = request.form["age"]
+        gender = request.form["gender"]
+        phone = request.form["phone"]
+
+        conn = get_db()
+        conn.execute(
+            "INSERT INTO patients (name, age, gender, phone, created_at) VALUES (?, ?, ?, ?, ?)",
+            (name, age, gender, phone, datetime.now().strftime("%Y-%m-%d %H:%M"))
+        )
+        conn.commit()
+        conn.close()
+
+        return redirect(url_for("dashboard"))
+
+    return render_template("register_patient.html")
+
+@app.route("/case_form/<int:patient_id>", methods=["GET","POST"])
+def case_form(patient_id):
+    conn = get_db()
+    patient = conn.execute("SELECT * FROM patients WHERE id = ?", (patient_id,)).fetchone()
+
+    if request.method =="POST":
+        symptoms = request.form["symptoms"]
+        medical_history = request.form["medical_history"]
+        vitals = request.form["vitals"]
+        medications = request.form["medications"]
+        allergies = request.form["allergies"]
+
+        conn.execute("""INSERT INTO case_records
+        (patient_id, symptoms, medical_history, vitals, medications, allergies, created_at) 
+        VALUES (?, ?, ?, ?, ?, ?, ?)""",
+        (patient_id, symptoms, medical_history, vitals, medications, allergies,
+          datetime.now().strftime("%Y-%m-%d %H:%M")))
+
+        conn.commit()
+        conn.close()
+
+        return redirect(url_for("dashboard"))
+
+    return render_template("case_form.html", patient=patient)  
+
+
+@app.route("/dashboard")
+def dashboard():
+    search = request.args.get("search", "")
+
+    conn = get_db()
+    if search:
+        patients = conn.execute(
+            "SELECT * FROM patients WHERE name LIKE ? ORDER BY created_at DESC",
+            (f"%{search}%",)
+        ).fetchall()
+
+    else:
+        patients = conn.execute(
+            "SELECT * FROM patients ORDER BY created_at DESC"
+        ).fetchall()
+    conn.close()
+
+    return render_template("dashboard.html", patients=patients, search=search) 
+
+@app.route("/view_record/<int:patient_id>")
+def view_record(patient_id):
+    conn = get_db()
+    patient = conn.execute("SELECT * FROM patients WHERE id =?", (patient_id,)).fetchone()
+    records = conn.execute(
+        "SELECT * FROM case_records WHERE patient_id =? ORDER BY created_at DESC",
+        (patient_id,)
+    ).fetchall()
+    conn.close()
+
+    summaries = []
+    for r in records:
+        summary = (
+            f"Patient reported: {r['symptoms']}. "
+            f"Medical history: {r['medical_history'] or 'None reported'}. "
+            f"Vitals: {r['vitals'] or 'None recorded'}. "
+            f"Current medications: {r['medications'] or 'None'}. "
+            f"Allergies: {r['allergies'] or 'None known'}. "
+        )   
+        summaries.append(summary)
+
+    return render_template("view_record.html", patient=patient, records=records, summaries=summaries)    
+
+
+if __name__ == "__main__":
+    init_db()
+    app.run(debug=True)

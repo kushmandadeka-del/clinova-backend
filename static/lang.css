@@ -1,0 +1,37 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.language{
+    background-color: #8cc9c6;
+    height: 100vh;
+    width: 100%;
+    padding: 50px 0;
+
+}
+.language-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 16px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+.language-section {
+    text-align: center;
+    padding: 56px 24px;
+}
+
+#language-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 26px;
+    font-weight: 500;
+    color: #14524F;
+    margin-bottom: 8px;
+}   
+
+#language-subtitle {
+    font-size: 14px;
+    color: #5F6B67;
+    margin-bottom: 40px;
+}

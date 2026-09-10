@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Hospice Pharmacy</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='pharmacy.css') }}">
+
+</head>
+
+<body>
+
+    <div class="navbar">
+
+        <div id="logo"> </div>
+
+        <div id="tagline">
+            <h1>Clinova Pharmacy</h1>
+        </div>
+
+        <div id="login">
+            <a href="login.html">Login</a>
+        </div>
+
+    </div>
+
+
+    <div class="pharmacy-container">
+
+        <h1>Your Health, Delivered to You</h1>
+
+        <p>
+            Order medicines and healthcare essentials easily from Clinova Pharmacy.
+        </p>
+
+
+        <div class="pharmacy-search">
+
+            <input
+                type="text"
+                placeholder="Search for medicines..."
+            >
+
+            <button>Search</button>
+
+        </div>
+
+
+        <div class="pharmacy-options">
+
+            <div class="pharmacy-card">
+
+                <h2>Order Medicines</h2>
+
+                <p>
+                    Search and order your required medicines.
+                </p>
+
+                <button>Order Now</button>
+
+            </div>
+
+
+            <div class="pharmacy-card">
+
+                <h2>Upload Prescription</h2>
+
+                <p>
+                    Upload your doctor's prescription.
+                </p>
+
+                <button>Upload</button>
+
+            </div>
+
+
+            <div class="pharmacy-card">
+
+                <h2>Healthcare Products</h2>
+
+                <p>
+                    Browse healthcare and wellness products.
+                </p>
+
+                <button>Explore</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>

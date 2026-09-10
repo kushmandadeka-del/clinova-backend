@@ -1,0 +1,92 @@
+.emergency-section {
+    text-align: center;
+    padding: 56px 24px;
+}
+
+#emergency-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 26px;
+    font-weight: 500;
+    color: #14524F;
+    margin-bottom: 8px;
+}
+
+#emergency-subtitle {
+    font-size: 14px;
+    color: #5F6B67;
+    margin-bottom: 32px;
+}
+
+.call-btn {
+    display: inline-block;
+    background-color: #D64545;
+    color: #FFFFFF;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 18px 40px;
+    border-radius: 12px;
+    margin-bottom: 40px;
+}
+
+.call-btn:hover {
+    background-color: #b93a3a;
+}
+
+.emergency-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
+    max-width: 600px;
+    margin: 0 auto 40px;
+}
+
+.emergency-card {
+    display: block;
+    background-color: #FFFFFF;
+    border: 1px solid #E4E8E6;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.emergency-card:hover {
+    border-color: #14524F;
+}
+
+.emergency-card h3 {
+    font-size: 13px;
+    font-weight: 500;
+    color: #26322F;
+    margin-bottom: 6px;
+}
+
+.emergency-card p {
+    font-size: 16px;
+    font-weight: 500;
+    color: #14524F;
+}
+
+#contact-placeholder {
+    font-size: 13px;
+    font-weight: 400;
+    color: #9AA39F;
+}
+
+.quick-actions {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.quick-action {
+    font-size: 13px;
+    color: #14524F;
+    border: 1px solid #14524F;
+    padding: 10px 18px;
+    border-radius: 8px;
+}
+
+.quick-action:hover {
+    background-color: #14524F;
+    color: #FFFFFF;
+}

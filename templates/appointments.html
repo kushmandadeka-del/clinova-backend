@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Appointments</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='appointment.css') }}">
+</head>
+
+<body>
+    <div class="appointments-container"> <!-- Patients Needing Assistance -->
+        <section class="patient-section">
+            <h2 id="pending-title">Patients Needing Assistance</h2>
+            <table class="patient-table" id="pending-table">
+                <tr class="table-header">
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Phone</th>
+                    <th>Action</th>
+                </tr> {% for p in pending %} <tr class="patient-row">
+                    <td>{{ p['name'] }}</td>
+                    <td>{{ p['age'] }}</td>
+                    <td>{{ p['gender'] }}</td>
+                    <td>{{ p['phone'] }}</td>
+                    <td> <a class="action-btn take-case-btn" href="/case_form/{{ p['id'] }}"> Take Case </a> </td>
+                </tr> {% endfor %}
+            </table>
+        </section> <!-- Already Seen Patients -->
+        <section class="patient-section">
+            <h2 id="seen-title">Already Seen Patients</h2>
+            <table class="patient-table" id="seen-table">
+                <tr class="table-header">
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Phone</th>
+                    <th>Action</th>
+                </tr> {% for p in seen %} <tr class="patient-row">
+                    <td>{{ p['name'] }}</td>
+                    <td>{{ p['age'] }}</td>
+                    <td>{{ p['gender'] }}</td>
+                    <td>{{ p['phone'] }}</td>
+                    <td> <a class="action-btn view-record-btn" href="/view_record/{{ p['id'] }}"> View Record </a> </td>
+                </tr> {% endfor %}
+            </table>
+        </section>
+    </div>
+</body>
+
+</html>

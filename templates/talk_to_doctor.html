@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='talk.css') }}">
+
+</head>
+<body>
+    <div class="talk-section">
+        <h1 id="talk-title">Talk to your doctor</h1>
+        <p id="talk-subtitle">Speak naturally — we'll turn your conversation into a clear record</p>
+
+        <div class="mic-box">
+            <button id="mic-btn">🎤</button>
+            <p id="mic-status">Tap to start recording</p>
+        </div>
+
+        <div class="transcript-box">
+            <h3>Live transcript</h3>
+            <p id="transcript-text">Your conversation will appear here as you speak...</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,103 @@
+* {
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: black;
+}
+#pharmacy {
+    padding: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.navbar{
+    background-color: darkcyan;
+    height: 80px;
+    width: 100%;
+    display:flex;
+    align-items: center;
+    /* justify-content: space-evenly; */
+}
+#logo{
+    height: 80px;
+    width: 110px;
+    background-color: black;
+    background-image: url(clinova.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    margin: 0 200px ;
+}
+#login{
+    background-color:cadetblue;
+    height: 30px;
+    width: 50px;
+    align-content: center;
+    padding: 3px 0px 0 7px;
+    color: white;
+    border-radius: 5px;
+    /* margin-top: 48px; */
+
+    margin-left: 550px;
+}
+#pharmacy a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+.pharmacy-container {
+    text-align: center;
+    padding: 60px 10%;
+    min-height: 70vh;
+}
+
+.pharmacy-container h1 {
+    margin-bottom: 15px;
+}
+
+.pharmacy-container p {
+    font-size: 18px;
+}
+
+
+.pharmacy-search {
+    margin: 30px auto;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.pharmacy-search input {
+    width: 300px;
+    padding: 12px;
+    font-size: 16px;
+}
+
+.pharmacy-search button {
+    padding: 12px 25px;
+    cursor: pointer;
+}
+
+
+.pharmacy-options {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+
+.pharmacy-card {
+    width: 250px;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+
+.pharmacy-card button {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}

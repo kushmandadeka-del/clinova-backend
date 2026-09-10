@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    
+    <div class="navbar"> 
+        <div id="logo"> </div>
+        <div id="tagline"><h1>Clinova:</h1></div>
+        <div id="tagline"><h2>From Case to Care, Seamlessly.</h2></div>
+        <div id="dr_register"><a href="{{ url_for('doctor_register') }}">Doctor Registration</a></div>
+        <div id="login"><a href="{{ url_for('login') }}">Login</a></div>  
+        <div id="register"><a href="{{ url_for('register_patient') }}">Register Patient</a></div>
+    </div>
+    <div class="menu">
+    
+        <div id="dashboard"><a href="{{ url_for('dashboard') }}">Dashboard</a></div>
+        <div id="generic-med"><a href="{{ url_for('generic') }}">Generic Medicines</a></div>
+        <div id="lab"><a href="{{ url_for('lab') }}">Lab Tests</a></div>
+        <div id="drlogin"><a href="{{ url_for('doctor_login') }}">Doctor Login</a></div>
+        <div id="appointment"><a href="{{ url_for('appointments') }}">Appointment List</a></div>
+    </div>
+    <div class="content">
+        <h1 id="cap">Patient case-taking, simplified</h1>
+        <p id="subcap">
+        database documentation for faster, clearer clinical records.</p>
+        <div class="contentbox">
+            <div id="box1"><a href="{{ url_for('new_appointment') }}">New appointment</a></div>
+            <div id="box2"><a href="{{ url_for('patient_history') }}">View patient history</a></div>
+        </div>
+    </div>
+    <div class="content-2">
+        <div id="talk">
+            <a href="{{ url_for('talk_to_doctor') }}">Talk to your doctor</a>
+            </div>
+            <div id="multilingual">
+                <a href="{{ url_for('language') }}">Multilingual</a>
+            </div>
+            <div id="emergency">
+                <a href="{{ url_for('emergency') }}">Emergency</a>
+            </div>
+            <div id =pharmacy>
+                <a href="{{ url_for('pharmacy') }}">Pharmacy</a>
+        </div>
+    </div>
+    <div class="footer">
+        <p>© 2026 Clinova. All rights reserved.</p>
+    </div>
+</body>
+</html>
