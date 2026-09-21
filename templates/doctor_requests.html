@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Doctor Dashboard</title>
+</head>
+
+<body>
+
+    <h1>Doctor Dashboard</h1>
+
+    <h2>Welcome, {{ doctor['name'] }}</h2>
+
+
+    <!-- Pending Access Requests -->
+
+    <h3>Pending Record Access Requests</h3>
+
+    {% if requests|length == 0 %}
+
+        <p>No pending access requests.</p>
+
+    {% else %}
+
+        {% for req in requests %}
+
+            <div>
+
+                <p>
+                    <strong>Patient:</strong>
+                    {{ req['patient_name'] }}
+                </p>
+
+                <p>
+                    <strong>Requested Records:</strong>
+                </p>
+
+                {% if req['prescriptions'] %}
+                    <p>✓ Prescriptions</p>
+                {% endif %}
+
+                {% if req['lab_reports'] %}
+                    <p>✓ Lab Reports</p>
+                {% endif %}
+
+                {% if req['consultations'] %}
+                    <p>✓ Consultations</p>
+                {% endif %}
+
+                <p>
+                    <strong>Requested on:</strong>
+                    {{ req['created_at'] }}
+                </p>
+
+                <hr>
+
+            </div>
+
+        {% endfor %}
+
+    {% endif %}
+
+
+    <!-- Submitted Cases -->
+
+    <h3>Submitted Patient Cases</h3>
+
+    {% if submitted_cases|length == 0 %}
+
+        <p>No submitted cases yet.</p>
+
+    {% else %}
+
+        {% for case in submitted_cases %}
+
+            <div class="submitted-case">
+
+                <h3>Patient: {{ case['patient_name'] }}</h3>
+
+                <p>
+                    <strong>Submitted:</strong>
+                    {{ case['created_at'] }}
+                </p>
+
+                <h4>Original Transcript</h4>
+
+                <p>
+                    {{ case['original_transcript'] }}
+                </p>
+
+                <h4>English Translation</h4>
+
+                <p>
+                    {{ case['english_translation'] }}
+                </p>
+
+                <h4>Structured Case</h4>
+
+                <p>
+                    <strong>Symptoms:</strong>
+                    {{ case['symptoms'] or 'Not mentioned' }}
+                </p>
+
+                <p>
+                    <strong>Duration:</strong>
+                    {{ case['duration'] or 'Not mentioned' }}
+                </p>
+
+                <p>
+                    <strong>Medical History:</strong>
+                    {{ case['medical_history'] or 'Not mentioned' }}
+                </p>
+
+                <p>
+                    <strong>Medications:</strong>
+                    {{ case['medications'] or 'Not mentioned' }}
+                </p>
+
+                <p>
+                    <strong>Allergies:</strong>
+                    {{ case['allergies'] or 'Not mentioned' }}
+                </p>
+
+                <hr>
+
+            </div>
+
+        {% endfor %}
+
+    {% endif %}
+
+</body>
+</html>

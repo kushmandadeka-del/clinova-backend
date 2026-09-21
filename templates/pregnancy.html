@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Pregnancy Care - Clinova</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='pregnancy.css') }}">
+</head>
+
+<body>
+
+    <div class="page">
+
+        <div class="topbar">
+
+            <h1>Clinova</h1>
+
+            <div>
+                <div id="home"><a href="{{ url_for('home') }}">Home</a></div>
+                <a href="{{ url_for('dashboard') }}">Dashboard </a>
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <h2>Pregnancy Care</h2>
+
+            <p>
+                Clinova helps manage pregnancy information, medical checkups,
+                medications and emergency hospital referrals in one place.
+            </p>
+
+        </div>
+
+
+        <div class="feature-grid">
+
+
+            <!-- Register Pregnancy -->
+
+            <div class="card">
+
+                <h2>🤰 Register Pregnancy</h2>
+
+                <p>
+                    Create a pregnancy profile for a patient and record
+                    important pregnancy information.
+                </p>
+
+                <a class="small-button" href="{{ url_for('pregnancy_register') }}">
+                    Register Pregnancy
+                </a>
+
+            </div>
+
+
+            <!-- Pregnancy Patients -->
+
+            <div class="card">
+
+                <h2>👩‍⚕️ Pregnancy Patients</h2>
+
+                <p>
+                    View registered pregnancy patients and open their
+                    individual pregnancy profiles.
+                </p>
+
+                <a class="small-button" href="{{ url_for('pregnancy_patients') }}">
+                    View Patients
+                </a>
+
+            </div>
+
+
+            <!-- Hospital Network -->
+
+            <div class="card">
+
+                <h2>🏥 Hospital Network</h2>
+
+                <p>
+                    View hospitals connected to the Clinova emergency
+                    referral network.
+                </p>
+
+                <a class="small-button" href="{{ url_for('hospital_list') }}">
+                    View Hospitals
+                </a>
+
+                <br><br>
+
+                <a class="small-button" href="{{ url_for('hospital_register') }}">
+                    Register Hospital
+                </a>
+
+            </div>
+
+
+            <!-- Emergency Referral -->
+
+            <div class="card emergency-card">
+
+                <h2>🚑 Emergency Hospital Referral</h2>
+
+                <p>
+                    If a hospital cannot provide the required facility,
+                    find another connected hospital for emergency transfer.
+                </p>
+
+                <a class="emergency-button" href="{{ url_for('pregnancy_patients') }}">
+                    Select Patient for Referral
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pregnancy Care - Clinova</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='pregnancy.css') }}">
+</head>
+
+<body>
+
+<div class="page">
+
+    <div class="topbar">
+        <h1>Clinova</h1>
+        <div>
+            <a href="/dashboard">Dashboard</a>
+        </div>
+    </div>
+
+    <div class="card">
+
+        <h2>Pregnancy Care Profile</h2>
+
+        <div class="profile-header">
+
+            <div>
+                <h2>{{ patient['name'] }}</h2>
+                <p>
+                    Age: {{ patient['age'] }} |
+                    Blood Group: {{ pregnancy['blood_group'] or 'Not recorded' }}
+                </p>
+            </div>
+
+            <div class="status">
+                {{ pregnancy['risk_status'] }}
+            </div>
+
+        </div>
+
+        <div class="info-grid">
+
+            <div class="info-box">
+                <span>Current Pregnancy</span>
+                <strong>{{ pregnancy_week }} weeks</strong>
+            </div>
+
+            <div class="info-box">
+                <span>Estimated Delivery Date</span>
+                <strong>{{ pregnancy['edd_date'] }}</strong>
+            </div>
+
+            <div class="info-box">
+                <span>Hospital</span>
+                <strong>{{ hospital['name'] }}</strong>
+            </div>
+
+            <div class="info-box">
+                <span>Doctor</span>
+                <strong>Dr. {{ doctor['name'] }}</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="section-heading">
+            <h2>Current Medications</h2>
+
+            <a class="small-button"
+               href="/pregnancy/{{ pregnancy['id'] }}/medication">
+                Add Medication
+            </a>
+        </div>
+
+        {% if medications %}
+
+            {% for medicine in medications %}
+
+                <div class="record">
+
+                    <strong>{{ medicine['medicine_name'] }}</strong>
+
+                    <p>
+                        Dosage: {{ medicine['dosage'] or 'Not recorded' }}
+                    </p>
+
+                    <p>
+                        Frequency: {{ medicine['frequency'] or 'Not recorded' }}
+                    </p>
+
+                    {% if medicine['notes'] %}
+                        <p>{{ medicine['notes'] }}</p>
+                    {% endif %}
+
+                </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <p>No medications recorded.</p>
+
+        {% endif %}
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="section-heading">
+
+            <h2>Medical Checkups</h2>
+
+            <a class="small-button"
+               href="/pregnancy/{{ pregnancy['id'] }}/checkup">
+                Add Checkup
+            </a>
+
+        </div>
+
+        {% if checkups %}
+
+            {% for checkup in checkups %}
+
+                <div class="record">
+
+                    <h3>
+                        {{ checkup['checkup_date'] }}
+                    </h3>
+
+                    <p>
+                        Pregnancy Week:
+                        {{ checkup['pregnancy_week'] or 'Not recorded' }}
+                    </p>
+
+                    <p>
+                        Blood Pressure:
+                        {{ checkup['blood_pressure'] or 'Not recorded' }}
+                    </p>
+
+                    <p>
+                        Weight:
+                        {{ checkup['weight'] or 'Not recorded' }}
+                    </p>
+
+                    <p>
+                        Hemoglobin:
+                        {{ checkup['hemoglobin'] or 'Not recorded' }}
+                    </p>
+
+                    <p>
+                        Blood Sugar:
+                        {{ checkup['blood_sugar'] or 'Not recorded' }}
+                    </p>
+
+                    {% if checkup['ultrasound_report'] %}
+                        <p>
+                            Ultrasound:
+                            {{ checkup['ultrasound_report'] }}
+                        </p>
+                    {% endif %}
+
+                    {% if checkup['doctor_notes'] %}
+                        <p>
+                            Doctor Notes:
+                            {{ checkup['doctor_notes'] }}
+                        </p>
+                    {% endif %}
+
+                </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <p>No checkups recorded.</p>
+
+        {% endif %}
+
+    </div>
+
+
+    <div class="card emergency-card">
+
+        <h2>Emergency Referral</h2>
+
+        <p>
+            If the current hospital cannot provide the required emergency
+            facility, start a digital hospital referral.
+        </p>
+
+        <a class="emergency-button"
+           href="/pregnancy/{{ pregnancy['id'] }}/emergency">
+            Start Emergency Referral
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

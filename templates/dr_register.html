@@ -5,21 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Doctor Registration - Clinova</title>
-    <link rel="stylesheet" href="dr_register.css">
-</head>
+<link rel="stylesheet" href="{{ url_for('static', filename='dr_register.css') }}"></head>
 
 <body> <!-- Navbar -->
     <nav class="navbar">
         <div class="logo">Clinova</div>
-        <div class="nav-links"> <a href="index.html">Home</a> <a href="dr-login.html">Doctor Login</a> </div>
+        <div class="nav-links"> 
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('doctor_login') }}">Doctor Login</a>
+        </div>
     </nav> <!-- Registration Container -->
     <div class="container">
         <div class="page-header">
             <h1>Doctor Registration</h1>
             <p>Create your Clinova doctor account</p>
         </div> <!-- Registration Form -->
-        <form class="register-form"> <!-- Doctor Name -->
-            <div class="form-group"> <label for="doctor-name">Full Name</label> <input type="text" id="doctor-name"
+        <form class="register-form" method="POST" action="{{ url_for('doctor_register') }}">            <div class="form-group"> <label for="doctor-name">Full Name</label> <input type="text" id="doctor-name"
                     name="doctor-name" placeholder="Dr. John Doe" required> </div> <!-- Medical Registration Number -->
             <div class="form-group"> <label for="registration-number"> Medical Registration Number </label> <input
                     type="text" id="registration-number" name="registration-number"
@@ -59,8 +60,8 @@
             <div class="terms"> <input type="checkbox" id="terms" required> <label for="terms"> I confirm that the
                     information provided is correct. </label> </div> <!-- Button --> <button type="submit"
                 class="register-btn"> Register as Doctor </button> <!-- Login -->
-            <p class="login-text"> Already have an account? <a href="dr-login.html">Login here</a> </p>
-        </form>
+            <a href="{{ url_for('doctor_login') }}">Login here</a>     
+           </form>
     </div>
 </body>
 

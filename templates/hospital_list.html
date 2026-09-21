@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Hospital Network - Clinova</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='pregnancy.css') }}">
+
+</head>
+
+<body>
+
+<div class="page">
+
+    <div class="topbar">
+
+        <h1>Clinova</h1>
+
+        <div>
+
+            <a href="{{ url_for('pregnancy_care') }}">
+                Pregnancy Care
+            </a>
+
+            <a href="{{ url_for('dashboard') }}">
+                Dashboard
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>Hospital Network</h2>
+
+        <p>
+            Hospitals connected to the Clinova emergency referral network.
+        </p>
+
+        <a class="small-button"
+           href="{{ url_for('hospital_register') }}">
+
+            Register Hospital
+
+        </a>
+
+    </div>
+
+
+    {% if hospitals %}
+
+        {% for hospital in hospitals %}
+
+        <div class="card">
+
+            <h2>
+                {{ hospital['name'] }}
+            </h2>
+
+            <p>
+                📍 {{ hospital['address'] }}
+            </p>
+
+            <p>
+                📞 {{ hospital['phone'] }}
+            </p>
+
+
+            <h3>Available Facilities</h3>
+
+            <ul>
+
+                {% if hospital['has_icu'] %}
+                    <li>ICU</li>
+                {% endif %}
+
+                {% if hospital['has_nicu'] %}
+                    <li>NICU</li>
+                {% endif %}
+
+                {% if hospital['has_obstetric_emergency'] %}
+                    <li>Obstetric Emergency</li>
+                {% endif %}
+
+                {% if hospital['has_blood_bank'] %}
+                    <li>Blood Bank</li>
+                {% endif %}
+
+                {% if hospital['ambulance_available'] %}
+                    <li>Ambulance Available</li>
+                {% endif %}
+
+            </ul>
+
+
+            {% if hospital['has_icu'] %}
+
+                <p>
+                    ICU Beds:
+                    {{ hospital['available_icu_beds'] }}
+                </p>
+
+            {% endif %}
+
+
+            {% if hospital['has_nicu'] %}
+
+                <p>
+                    NICU Beds:
+                    {{ hospital['available_nicu_beds'] }}
+                </p>
+
+            {% endif %}
+
+        </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <div class="card">
+
+            <h3>No hospitals registered yet.</h3>
+
+            <a class="small-button"
+               href="{{ url_for('hospital_register') }}">
+
+                Register First Hospital
+
+            </a>
+
+        </div>
+
+    {% endif %}
+
+</div>
+
+</body>
+
+</html>

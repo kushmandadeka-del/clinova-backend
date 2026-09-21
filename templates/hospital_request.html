@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hospital Emergency Requests - Clinova</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='pregnancy.css') }}">
+</head>
+
+<body>
+
+<div class="page">
+
+    <div class="topbar">
+        <h1>Clinova Hospital Network</h1>
+        <a href="/dashboard">Dashboard</a>
+    </div>
+
+    <div class="card">
+
+        <h2>Hospital Emergency Requests</h2>
+
+        <form method="GET">
+
+            <label>Select Hospital</label>
+
+            <select name="hospital_id" onchange="this.form.submit()">
+
+                <option value="">
+                    Select Hospital
+                </option>
+
+                {% for hospital in hospitals %}
+
+                    <option
+                        value="{{ hospital['id'] }}"
+                        {% if selected_hospital_id == hospital['id'] %}
+                        selected
+                        {% endif %}
+                    >
+                        {{ hospital['name'] }}
+                    </option>
+
+                {% endfor %}
+
+            </select>
+
+        </form>
+
+    </div>
+
+
+    {% if selected_hospital %}
+
+        <div class="card">
+
+            <h2>
+                Incoming Emergency Requests
+            </h2>
+
+            <p>
+                Hospital:
+                <strong>{{ selected_hospital['name'] }}</strong>
+            </p>
+
+        </div>
+
+
+        {% if requests %}
+
+            {% for item in requests %}
+
+                <div class="card emergency-request">
+
+                    <h2>🚨 Emergency Referral</h2>
+
+                    <p>
+                        Patient:
+                        <strong>
+                            {{ item['patient_name'] }}
+                        </strong>
+                    </p>
+
+                    <p>
+                        From:
+                        <strong>
+                            {{ item['from_hospital_name'] }}
+                        </strong>
+                    </p>
+
+                    <p>
+                        Required Facility:
+                        <strong>
+                            {{ item['required_facility'] }}
+                        </strong>
+                    </p>
+
+                    <p>
+                        Emergency Level:
+                        <strong>
+                            {{ item['emergency_level'] }}
+                        </strong>
+                    </p>
+
+                    <p>
+                        Request Time:
+                        {{ item['created_at'] }}
+                    </p>
+
+                    <div class="request-buttons">
+
+                        <form
+                            method="POST"
+                            action="/hospital_requests/{{ item['id'] }}/accept"
+                        >
+                            <input
+                                type="hidden"
+                                name="hospital_id"
+                                value="{{ selected_hospital['id'] }}"
+                            >
+
+                            <button type="submit">
+                                Accept Referral
+                            </button>
+                        </form>
+
+
+                        <form
+                            method="POST"
+                            action="/hospital_requests/{{ item['id'] }}/reject"
+                        >
+                            <input
+                                type="hidden"
+                                name="hospital_id"
+                                value="{{ selected_hospital['id'] }}"
+                            >
+
+                            <button
+                                type="submit"
+                                class="reject-button"
+                            >
+                                Reject
+                            </button>
+                        </form>
+
+                    </div>
+
+                </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <div class="card">
+                <p>No pending emergency requests.</p>
+            </div>
+
+        {% endif %}
+
+    {% endif %}
+
+</div>
+
+</body>
+</html>

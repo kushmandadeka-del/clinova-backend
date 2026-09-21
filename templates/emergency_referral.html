@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Emergency Referral - Clinova</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='pregnancy.css') }}">
+</head>
+
+<body>
+
+    <div class="page">
+
+        <div class="topbar">
+            <h1>Clinova</h1>
+            <a href="/pregnancy/{{ pregnancy['id'] }}">Pregnancy Profile</a>
+        </div>
+
+        <div class="card emergency-card">
+
+            <h2>Emergency Hospital Referral</h2>
+
+            <p>
+                Patient:
+                <strong>{{ patient['name'] }}</strong>
+            </p>
+
+            <p>
+                Current Hospital:
+                <strong>{{ current_hospital['name'] }}</strong>
+            </p>
+
+            <form method="POST">
+
+                <label>Required Facility</label>
+
+                <select name="required_facility" required>
+
+                    <option value="">
+                        Select required facility
+                    </option>
+
+                    <option value="NICU">
+                        NICU
+                    </option>
+
+                    <option value="ICU">
+                        ICU
+                    </option>
+
+                    <option value="Obstetric Emergency">
+                        Obstetric Emergency Care
+                    </option>
+
+                    <option value="Blood Bank">
+                        Blood Bank
+                    </option>
+
+                    <option value="ICU + NICU">
+                        ICU + NICU
+                    </option>
+
+                    <option value="Obstetric Emergency + NICU">
+                        Obstetric Emergency + NICU
+                    </option>
+
+                </select>
+
+                <label>Emergency Level</label>
+
+                <select name="emergency_level" required>
+
+                    <option value="URGENT">
+                        Urgent
+                    </option>
+
+                    <option value="CRITICAL">
+                        Critical
+                    </option>
+
+                </select>
+
+                <a class="emergency-button" href="{{ url_for('pregnancy_patients') }}">
+                    Select Patient for Referral
+                </a>
+
+            </form>
+            <a class="small-button" href="/pregnancy/{{ pregnancy['id'] }}">
+                Back to Pregnancy Profile
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

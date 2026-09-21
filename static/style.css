@@ -3,624 +3,488 @@
     padding: 0;
     box-sizing: border-box;
     text-decoration: none;
-    color: black;
 }
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f9fb;
+    color: #17232d;
+}
+
+a {
+    color: inherit;
+}
+
+/* Navbar */
 .navbar {
-    height: auto;
     width: 100%;
-    background-color: lightblue;
-    padding: 5px 0px 8px 5px;
+    min-height: 80px;
+    padding: 12px 5%;
+    background-color: #dff4fa;
     display: flex;
     align-items: center;
-    /* gap: 50px; */
+    justify-content: space-between;
+    gap: 30px;
 }
-#logo{
-    height: 69px;
-    width: 100px;
-    margin-right: 400px;
-    background-color: black;
-    background-image: url(clinova.png);
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+#logo {
+    width: 75px;
+    height: 60px;
+    background-image: url("clinova.png");
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: contain;
     background-position: center;
 }
-#dr_register{
-    margin-left: 130px;
-    background-color: rgba(78, 170, 201, 0.425);
-    height: 40px;
-    width: 150px;
-    padding: 10px;
-    border-radius: 10px;
-}
-#login{
-    margin-left: 40px;
-    background-color: rgba(78, 170, 201, 0.425);
-    height: 40px;
-    width: 60px;
-    padding: 10px;
-    border-radius: 10px;
-}
-#register{
-    margin-left: 40px;
-    background-color: rgba(78, 170, 201, 0.425);
-    height: 40px;
-    width: 130px;
-    padding-left: 10px;
-    padding-top:10px;
-    border-radius: 10px;
 
+.brand-text h1 {
+    font-size: 28px;
+    color: #06337c;
 }
-#tagline{
-    text-decoration: underline;
+
+.brand-text p {
+    margin-top: 3px;
+    font-size: 13px;
+    color: #41606d;
 }
-.menu {
-    background-color: rgb(140, 209, 232);
-    height: 50px;
-    width: 100%;
+
+.account-nav {
     display: flex;
     align-items: center;
-    gap: 80px;
+    gap: 10px;
 }
-#dashboard{
-    margin-left: 8px;
-    background-color: rgba(93, 184, 214, 0.6);
-    height:30px;
-    width:100px;
-    border-radius: 5px;
-    padding:5px 0 0 13px;
+
+.account-nav a {
+    padding: 9px 14px;
+    border-radius: 7px;
+    font-size: 14px;
+    color: #12313d;
 }
-#case-form{
-    /* margin-left: 15px; */
-    background-color: rgba(93, 184, 214, 0.6);
-    height:30px;
-    width:100px;
-    border-radius: 5px;
-    padding:5px
+
+.account-nav a:hover {
+    background-color: #c3e7f1;
 }
-/* #register-patient{
-    margin-left: 15px;
-    background-color: rgba(93, 184, 214, 0.6);
-    height:30px;
-    width:130px;
-    border-radius: 5px;
-    padding:5px
-} */
-#generic-med{
-    /* margin-left: 15px; */
-    background-color: rgba(93, 184, 214, 0.6);
-    height:30px;
-    width:150px;
-    border-radius: 5px;
-    padding:5px 0 0 13px
+
+.account-nav .register-btn {
+    background-color: #06337c;
+    color: white;
 }
-#lab{
-    /* margin-left: 15px; */
-    background-color: rgba(93, 184, 214, 0.6);
-    height:30px;
-    width:90px;
-    border-radius: 5px;
-    padding:5px 0 0 13px;
+
+.account-nav .register-btn:hover {
+    background-color: #05285f;
 }
-#drlogin{
-    margin-left: 520px;
-    background-color: rgba(236, 240, 241, 0.425);
-    height:30px;
-    width:100px;
-    border-radius: 5px;
-    padding:5px;
+
+/* Menu */
+.menu {
+    width: 100%;
+    min-height: 48px;
+    padding: 8px 5%;
+    background-color: #8cd1e8;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
-#appointment{
-    margin-left: 15px;
-    background-color: rgba(236, 240, 241, 0.425);
-    height:30px;
-    width:130px;
-    border-radius: 5px;
-    padding:5px
+
+.menu a {
+    padding: 7px 14px;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #092c3a;
 }
-.content {
-    text-align: center;
-    padding: 40px;
-    /* gap: 40px; */
-    height: auto;
-    width:100%;
-    background-color:rgba(223, 222, 222, 0.484)
+
+.menu a:hover {
+    background-color: rgba(255, 255, 255, 0.45);
 }
-#cap{
-    padding-bottom:10px;
+
+/* Hero */
+.hero {
+    width: 90%;
+    max-width: 1200px;
+    margin: 45px auto;
+    padding: 55px;
+    min-height: 360px;
+    border-radius: 18px;
+    background-color: #e6f6fa;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
 }
-.contentbox{
+
+.hero-text {
+    max-width: 650px;
+}
+
+.hero-label {
+    margin-bottom: 12px;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #18718e;
+}
+
+.hero h2 {
+    margin-bottom: 18px;
+    font-size: 44px;
+    line-height: 1.15;
+    color: #06337c;
+}
+
+.hero-text>p:not(.hero-label) {
+    max-width: 600px;
+    font-size: 17px;
+    line-height: 1.7;
+    color: #53656d;
+}
+
+.hero-buttons {
+    margin-top: 25px;
+    display: flex;
+    gap: 12px;
+}
+
+.primary-btn,
+.secondary-btn {
+    display: inline-block;
+    padding: 12px 20px;
+    border-radius: 7px;
+    font-size: 15px;
+}
+
+.primary-btn {
+    background-color: #06337c;
+    color: white;
+}
+
+.primary-btn:hover {
+    background-color: #05285f;
+}
+
+.secondary-btn {
+    background-color: white;
+    color: #06337c;
+    border: 1px solid #06337c;
+}
+
+.secondary-btn:hover {
+    background-color: #eaf4ff;
+}
+
+.hero-card {
+    width: 310px;
+    min-height: 190px;
+    padding: 30px;
+    border-radius: 15px;
+    background-color: white;
+    border: 1px solid #c8e2ea;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    /* gap: 60px; */
 }
-#box1{
-    height: 80px;
-    /* align-items:center; */
-    /* margin-inline-start:250px ; */
-    width: 500px;
-    background-color: rgba(93, 184, 214, 0.6);
-    /* border-radius: 10px; */
-    border-radius: 0;
-    clip-path: polygon(
-        15px 0, 100% 0, 100% calc(100% - 15px),
-        calc(100% - 15px) 100%, 0 100%, 0 15px
-    );
-    border: 1px solid rgb(1, 11, 15);
-    align-content: center;
-    margin-top: 20px;
-}
-#box2{
-    height: 80px;
-    width: 500px;
-    /* margin-inline-start:250px ; */
 
-    background-color: rgba(93, 184, 214, 0.6);
-    /* border-radius: 10px; */
-    border-radius: 0;
-    clip-path: polygon(
-        15px 0, 100% 0, 100% calc(100% - 15px),
-        calc(100% - 15px) 100%, 0 100%, 0 15px
-    );
-    border: 1px solid rgb(1, 11, 15);
-    align-content: center;
-    margin-top: 20px;
+.hero-card h3 {
+    margin-bottom: 15px;
+    color: #06337c;
+    font-size: 21px;
 }
-.content-2{
+
+.hero-card p {
+    color: #60747d;
+    line-height: 1.7;
+}
+
+/* Section headings */
+.section-heading {
+    width: 90%;
+    max-width: 900px;
+    margin: 0 auto 35px;
     text-align: center;
-    padding: 40px;
-    display: flex;
-    justify-content:space-evenly;
-    /* gap: 40px; */
-    /* gap: 60px; */
-    height: 200px;
-    width:100%;
-    background-color: rgb(140, 209, 232);
 }
-#talk{
-    height: 80px;
-    width: 120px;
-    padding: 14px;
-    border-radius: 10px;
-    background-color: rgba(236, 240, 241, 0.425);
-    border: 1px solid rgb(1, 11, 15);
+
+.section-heading p {
+    margin-bottom: 8px;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #18718e;
 }
-#multilingual{
-    height: 80px;
-    width: 120px;
-    padding: 25px 10px;
-    border-radius: 10px;
-    background-color: rgba(236, 240, 241, 0.425);
-    border: 1px solid rgb(1, 11, 15);
+
+.section-heading h2 {
+    margin-bottom: 10px;
+    font-size: 30px;
+    color: #06337c;
 }
-#emergency{
-    height: 80px;
-    width: 120px;
-    padding: 25px 10px;
-    border-radius: 10px;
-    background-color: rgba(236, 240, 241, 0.425);
-    border: 1px solid rgb(1, 11, 15);
-}
-#pharmacy{
-    height: 80px;
-    width: 120px;
-    padding: 25px 10px;
-    border-radius: 10px;
-    background-color: rgba(236, 240, 241, 0.425);
-    border: 1px solid rgb(1, 11, 15);
-}
-.footer{
-    display: flex;
-    justify-content: center;
-    height: 70px;
-    width: 100%;
-    background-color:rgb(6, 51, 124);
-    padding: 20px;
+
+.section-heading span {
     font-size: 15px;
-}
-.footer p{
-    margin-top: 5px;
-    color:white
+    color: #66777f;
 }
 
-@media (max-width: 600px) {
-
-    /* NAVBAR */
-    .navbar {
-        flex-wrap: wrap;
-        height: auto;
-        padding: 10px;
-    }
-
-    #logo {
-        width: 100px;
-        height: 50px;
-        background-color: black;
-        background-size: cover;
-    }
-
-    #tagline h1 {
-        font-size: 25px;
-    }
-
-    #tagline h2 {
-        font-size: 13px;
-    }
-
-
-    /* LOGIN AND REGISTER */
-    #login,
-    #register {
-        font-size: 14px;
-    }
-
-
-    /* MENU */
-    .menu {
-        flex-wrap: wrap;
-        justify-content: center;
-        height: auto;
-        padding: 10px;
-        gap: 10px;
-    }
-
-    .menu div {
-        font-size: 13px;
-        
-    }
-
-
-    /* MAIN CONTENT */
-    .content {
-        padding: 30px 15px;
-        text-align: center;
-    }
-
-    #cap {
-        font-size: 28px;
-    }
-
-    #subcap {
-        font-size: 16px;
-    }
-
-
-    /* BUTTON BOXES */
-    .contentbox {
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
-    }
-
-    #box1,
-    #box2 {
-        width: 90%;
-        text-align: center;
-    }
-
-
-    /* SECOND CONTENT SECTION */
-    .content-2 {
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
-        height:auto;
-    }
-
-    #talk,
-    #multilingual,
-    #emergency,
-    #pharmacy {
-        width: 90%;
-        text-align: center;
-    }
-
-
-    /* FOOTER */
-    .footer {
-        text-align: center;
-        padding: 15px;
-        height:auto;
-    }
+/* Services */
+.services {
+    width: 100%;
+    padding: 25px 0 65px;
 }
-@media (max-width: 800px) {
 
-    /* NAVBAR */
-    .navbar {
-        flex-wrap: wrap;
-        height: auto;
-        padding: 10px;
-    }
-
-    #logo {
-        width: 100px;
-        height: 50px;
-        background-color: black;
-        background-size: cover;
-    }
-
-    #tagline h1 {
-        font-size: 25px;
-    }
-
-    #tagline h2 {
-        font-size: 13px;
-    }
-
-
-    /* LOGIN AND REGISTER */
-    #login,
-    #register {
-        font-size: 14px;
-    }
-
-
-    /* MENU */
-    .menu {
-        flex-wrap: wrap;
-        justify-content: center;
-        height: auto;
-        padding: 10px;
-        gap: 10px;
-    }
-
-    .menu div {
-        font-size: 13px;
-        
-    }
-
-
-    /* MAIN CONTENT */
-    .content {
-        padding: 30px 15px;
-        text-align: center;
-    }
-
-    #cap {
-        font-size: 28px;
-    }
-
-    #subcap {
-        font-size: 16px;
-    }
-
-
-    /* BUTTON BOXES */
-    .contentbox {
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
-    }
-
-    #box1,
-    #box2 {
-        width: 90%;
-        text-align: center;
-    }
-
-
-    /* SECOND CONTENT SECTION */
-    .content-2 {
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
-        height:auto;
-    }
-
-    #talk,
-    #multilingual,
-    #emergency,
-    #pharmacy {
-        width: 90%;
-        text-align: center;
-    }
-
-
-    /* FOOTER */
-    .footer {
-        text-align: center;
-        padding: 15px;
-        height:auto;
-    }
+.feature-grid {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
 }
+
+.feature-card {
+    min-height: 250px;
+    padding: 25px;
+    background-color: white;
+    border: 1px solid #d8e7ec;
+    border-radius: 12px;
+    transition: 0.2s;
+}
+
+.feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    border-color: #8ccfe3;
+}
+
+.feature-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 18px;
+    border-radius: 10px;
+    background-color: #e1f4f8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.feature-card h3 {
+    margin-bottom: 10px;
+    font-size: 19px;
+    color: #123d50;
+}
+
+.feature-card p {
+    min-height: 75px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #687980;
+}
+
+.feature-link {
+    display: inline-block;
+    margin-top: 15px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #126b88;
+}
+
+.emergency-card {
+    border-color: #e4caca;
+}
+
+/* Patient and doctor portals */
+.portal-section {
+    width: 100%;
+    padding: 60px 0;
+    background-color: #e8f5f8;
+}
+
+.portal-grid {
+    width: 90%;
+    max-width: 900px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.portal-card {
+    padding: 30px;
+    background-color: white;
+    border-radius: 12px;
+    border: 1px solid #d2e4e9;
+}
+
+.portal-icon {
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.portal-card h3 {
+    margin-bottom: 10px;
+    color: #06337c;
+    font-size: 21px;
+}
+
+.portal-card p {
+    margin-bottom: 18px;
+    color: #687980;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+.portal-card a {
+    font-size: 14px;
+    font-weight: bold;
+    color: #126b88;
+}
+
+/* CTA */
+.cta {
+    width: 90%;
+    max-width: 1000px;
+    margin: 65px auto;
+    padding: 45px 30px;
+    text-align: center;
+    border-radius: 15px;
+    background-color: #06337c;
+    color: white;
+}
+
+.cta h2 {
+    margin-bottom: 12px;
+    font-size: 30px;
+}
+
+.cta p {
+    margin-bottom: 25px;
+    color: #dce9f7;
+    line-height: 1.6;
+}
+
+.cta .primary-btn {
+    background-color: white;
+    color: #06337c;
+}
+
+.cta .primary-btn:hover {
+    background-color: #e8f1fa;
+}
+
+/* Footer */
+.footer {
+    width: 100%;
+    padding: 25px;
+    background-color: #062e70;
+    text-align: center;
+}
+
+.footer p {
+    margin: 5px;
+    color: white;
+    font-size: 14px;
+}
+
+/* Tablet */
 @media (max-width: 1000px) {
-
-    /* NAVBAR */
     .navbar {
+        padding: 12px 3%;
+    }
+
+    .account-nav {
         flex-wrap: wrap;
-        height: auto;
-        padding: 10px;
+        justify-content: flex-end;
     }
 
-    #logo {
-        width: 100px;
-        height: 50px;
-        background-color: black;
-        background-size: cover;
+    .hero {
+        padding: 40px;
     }
 
-    #tagline h1 {
-        font-size: 25px;
+    .hero h2 {
+        font-size: 36px;
     }
 
-    #tagline h2 {
-        font-size: 13px;
-    }
-
-
-    /* LOGIN AND REGISTER */
-    #login,
-    #register {
-        font-size: 14px;
-    }
-
-
-    /* MENU */
-    .menu {
-        flex-wrap: wrap;
-        justify-content: center;
-        height: auto;
-        padding: 10px;
-        gap: 10px;
-    }
-
-    .menu div {
-        font-size: 13px;
-        
-    }
-
-
-    /* MAIN CONTENT */
-    .content {
-        padding: 30px 15px;
-        text-align: center;
-    }
-
-    #cap {
-        font-size: 28px;
-    }
-
-    #subcap {
-        font-size: 16px;
-    }
-
-
-    /* BUTTON BOXES */
-    .contentbox {
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
-    }
-
-    #box1,
-    #box2 {
-        width: 90%;
-        text-align: center;
-    }
-
-
-    /* SECOND CONTENT SECTION */
-    .content-2 {
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
-        height:auto;
-    }
-
-    #talk,
-    #multilingual,
-    #emergency,
-    #pharmacy {
-        width: 90%;
-        text-align: center;
-    }
-
-
-    /* FOOTER */
-    .footer {
-        text-align: center;
-        padding: 15px;
-        height:auto;
+    .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
-@media (max-width: 1400px) {
 
-    /* NAVBAR */
+/* Mobile */
+@media (max-width: 650px) {
     .navbar {
-        flex-wrap: wrap;
-        height: auto;
-        padding: 10px;
+        flex-direction: column;
+        align-items: flex-start;
     }
 
-    #logo {
-        width: 100px;
-        height: 50px;
-        background-color: black;
-        background-size: cover;
+    .account-nav {
+        width: 100%;
+        justify-content: flex-start;
     }
 
-    #tagline h1 {
+    .account-nav a {
+        font-size: 13px;
+        padding: 8px 10px;
+    }
+
+    .menu {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding: 8px 3%;
+    }
+
+    .menu a {
+        white-space: nowrap;
+    }
+
+    .hero {
+        width: 94%;
+        margin: 25px auto;
+        padding: 30px 22px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .hero h2 {
+        font-size: 31px;
+    }
+
+    .hero-text>p:not(.hero-label) {
+        font-size: 15px;
+    }
+
+    .hero-card {
+        width: 100%;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .primary-btn,
+    .secondary-btn {
+        text-align: center;
+    }
+
+    .section-heading h2 {
         font-size: 25px;
     }
 
-    #tagline h2 {
-        font-size: 13px;
+    .feature-grid {
+        grid-template-columns: 1fr;
     }
 
-
-    /* LOGIN AND REGISTER */
-    #login,
-    #register {
-        font-size: 14px;
+    .portal-grid {
+        grid-template-columns: 1fr;
     }
 
-
-    /* MENU */
-    .menu {
-        flex-wrap: wrap;
-        justify-content: center;
-        height: auto;
-        padding: 10px;
-        gap: 10px;
+    .cta {
+        width: 94%;
+        padding: 35px 20px;
     }
 
-    .menu div {
-        font-size: 13px;
-        
-    }
-
-
-    /* MAIN CONTENT */
-    .content {
-        padding: 30px 15px;
-        text-align: center;
-    }
-
-    #cap {
-        font-size: 28px;
-    }
-
-    #subcap {
-        font-size: 16px;
-    }
-
-
-    /* BUTTON BOXES */
-    .contentbox {
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
-    }
-
-    #box1,
-    #box2 {
-        width: 90%;
-        text-align: center;
-    }
-
-
-    /* SECOND CONTENT SECTION */
-    .content-2 {
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
-        height:auto;
-    }
-
-    #talk,
-    #multilingual,
-    #emergency,
-    #pharmacy {
-        width: 90%;
-        text-align: center;
-    }
-
-
-    /* FOOTER */
-    .footer {
-        text-align: center;
-        padding: 15px;
-        height:auto;
+    .cta h2 {
+        font-size: 25px;
     }
 }

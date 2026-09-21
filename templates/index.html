@@ -1,55 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    
+    <title>Clinova - From Case to Care, Seamlessly.</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body>
-    
-    <div class="navbar"> 
-        <div id="logo"> </div>
-        <div id="tagline"><h1>Clinova:</h1></div>
-        <div id="tagline"><h2>From Case to Care, Seamlessly.</h2></div>
-        <div id="dr_register"><a href="{{ url_for('doctor_register') }}">Doctor Registration</a></div>
-        <div id="login"><a href="{{ url_for('login') }}">Login</a></div>  
-        <div id="register"><a href="{{ url_for('register_patient') }}">Register Patient</a></div>
-    </div>
-    <div class="menu">
-    
-        <div id="dashboard"><a href="{{ url_for('dashboard') }}">Dashboard</a></div>
-        <div id="generic-med"><a href="{{ url_for('generic') }}">Generic Medicines</a></div>
-        <div id="lab"><a href="{{ url_for('lab') }}">Lab Tests</a></div>
-        <div id="drlogin"><a href="{{ url_for('doctor_login') }}">Doctor Login</a></div>
-        <div id="appointment"><a href="{{ url_for('appointments') }}">Appointment List</a></div>
-    </div>
-    <div class="content">
-        <h1 id="cap">Patient case-taking, simplified</h1>
-        <p id="subcap">
-        database documentation for faster, clearer clinical records.</p>
-        <div class="contentbox">
-            <div id="box1"><a href="{{ url_for('new_appointment') }}">New appointment</a></div>
-            <div id="box2"><a href="{{ url_for('patient_history') }}">View patient history</a></div>
+    <header class="navbar">
+        <div class="brand">
+            <div id="logo"></div>
+            <div class="brand-text">
+                <h1>Clinova</h1>
+                <p>From Case to Care, Seamlessly.</p>
+            </div>
         </div>
-    </div>
-    <div class="content-2">
-        <div id="talk">
-            <a href="{{ url_for('talk_to_doctor') }}">Talk to your doctor</a>
+        <nav class="account-nav">
+            <a href="{{ url_for('hospital_register') }}" class="btn">Register Hospital</a>
+
+            <a href="{{ url_for('dashboard') }}"> Patient Dashboard </a> <a {% if session.get("role")=="doctor" %} <a
+                href="{{ url_for('doctor_requests') }}">
+                Doctor Dashboard
+            </a>
+            {% else %}
+            <a href="{{ url_for('doctor_login') }}">
+                Doctor Dashboard
+            </a>
+            {% endif %}
+            <a class="register-btn" href="{{ url_for('register_patient') }}"> Register </a>
+        </nav>
+    </header>
+    <nav class="menu"> <a href="{{ url_for('home') }}"> Home </a> <a href="{{ url_for('appointments') }}"> Appointments
+        </a> <a href="{{ url_for('lab') }}"> Lab Tests </a> <a href="{{ url_for('pharmacy') }}"> Pharmacy </a> <a
+            href="{{ url_for('generic') }}"> Generic Medicines </a> <a href="{{ url_for('emergency') }}"> Emergency </a>
+    </nav>
+    <main>
+        <section class="hero">
+            <div class="hero-text">
+                <p class="hero-label"> YOUR HEALTHCARE, CONNECTED </p>
+                <h2> Healthcare, connected around you. </h2>
+                <p> From your first consultation to prescriptions, lab reports and follow-ups, Clinova helps keep your
+                    healthcare journey organized in one place. </p>
+                <div class="hero-buttons"> <a href="{{ url_for('register_patient') }}" class="primary-btn"> Get Started
+                    </a> <a href="{{ url_for('talk_to_doctor') }}" class="secondary-btn"> Talk to a Doctor </a> </div>
             </div>
-            <div id="multilingual">
-                <a href="{{ url_for('language') }}">Multilingual</a>
+            <div class="hero-card">
+                <h3> Your Health Journey </h3>
+                <p> Consultation → Records → Tests → Treatment → Follow-up </p>
             </div>
-            <div id="emergency">
-                <a href="{{ url_for('emergency') }}">Emergency</a>
+        </section>
+        <section class="services">
+            <div class="section-heading">
+                <p> CLINOVA SERVICES </p>
+                <h2> Everything you need for your healthcare journey. </h2> <span> Access important healthcare services
+                    from one place. </span>
             </div>
-            <div id =pharmacy>
-                <a href="{{ url_for('pharmacy') }}">Pharmacy</a>
-        </div>
-    </div>
-    <div class="footer">
-        <p>© 2026 Clinova. All rights reserved.</p>
-    </div>
+            <div class="feature-grid"> <a href="{{ url_for('talk_to_doctor') }}" class="feature-card">
+                    <div class="feature-icon"> 🩺 </div>
+                    <h3> Talk to Your Doctor </h3>
+                    <p> Communicate with your doctor through voice or text without needing a phone call. </p> <span
+                        class="feature-link"> Talk to Doctor → </span>
+                    <a href="{{ url_for('pregnancy_care') }}" class="feature-card">
+                        <div class="feature-icon"> 🤰 </div>
+                        <h3> Pregnancy Care </h3>
+                        <p> Keep track of pregnancy-related care, appointments, health information and guidance. </p>
+                        <span class="feature-link"> Explore Pregnancy Care → </span>
+                    </a>
+                    <a href="{{ url_for('emergency') }}" class="feature-card emergency-card">
+                        <div class="feature-icon"> 🚨 </div>
+                        <h3> Emergency Care </h3>
+                        <p> Quickly access emergency information and important emergency contact numbers. </p> <span
+                            class="feature-link"> Emergency Help → </span>
+                    </a> <a href="{{ url_for('language') }}" class="feature-card">
+                        <div class="feature-icon"> 🌐 </div>
+                        <h3> Multilingual Healthcare </h3>
+                        <p> Access healthcare information and services in multiple languages. </p> <span
+                            class="feature-link"> Choose Language → </span>
+                    </a> <a href="{{ url_for('pharmacy') }}" class="feature-card">
+                        <div class="feature-icon"> 💊 </div>
+                        <h3> Pharmacy </h3>
+                        <p> Find medicines and explore pharmacy services through Clinova. </p> <span
+                            class="feature-link">
+                            Visit Pharmacy → </span>
+                    </a> <a href="{{ url_for('lab') }}" class="feature-card">
+                        <div class="feature-icon"> 🧪 </div>
+                        <h3> Lab Tests </h3>
+                        <p> Access laboratory services and manage your diagnostic journey. </p> <span
+                            class="feature-link">
+                            Explore Lab Tests → </span>
+                    </a> <a href="{{ url_for('dashboard') }}" class="feature-card">
+                        <div class="feature-icon"> 📋 </div>
+                        <h3> Medical Records </h3>
+                        <p> Keep your medical history and clinical records organized in one place. </p> <span
+                            class="feature-link"> View Records → </span>
+                    </a> <a href="{{ url_for('appointments') }}" class="feature-card">
+                        <div class="feature-icon"> 📅 </div>
+                        <h3> Appointments </h3>
+                        <p> Manage consultations and keep track of your upcoming appointments. </p> <span
+                            class="feature-link"> Manage Appointments → </span>
+                    </a> </div>
+        </section>
+        <section class="portal-section">
+            <div class="section-heading">
+                <p> CLINOVA PORTALS </p>
+                <h2> One platform. Different healthcare needs. </h2>
+            </div>
+            <div class="portal-grid">
+                <div class="portal-card">
+                    <div class="portal-icon"> 👤 </div>
+                    <h3> Patient Dashboard </h3>
+                    <p> Manage your appointments, medical records, case history and healthcare requests. </p> <a
+                        href="{{ url_for('dashboard') }}"> Open Patient Dashboard → </a>
+                </div>
+                <div class="portal-card">
+                    <div class="portal-icon"> 👨‍⚕️ </div>
+                    <h3> Doctor Dashboard </h3>
+                    <p> Manage patient requests, consultations and authorized medical records. </p> <a
+                        href="{{ url_for('doctor_login') }}"> Open Doctor Dashboard → </a>
+                </div>
+            </div>
+        </section>
+        <section class="cta">
+            <h2> Your healthcare journey starts here. </h2>
+            <p> Connect your consultations, records, tests and healthcare services through Clinova. </p> <a
+                href="{{ url_for('register_patient') }}" class="primary-btn"> Create Patient Account </a>
+        </section>
+    </main>
+    <footer class="footer">
+        <p> © 2026 Clinova. All rights reserved. </p>
+        <p> From Case to Care, Seamlessly. </p>
+    </footer>
 </body>
+
 </html>

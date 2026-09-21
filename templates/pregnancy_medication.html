@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Medication</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='pregnancy.css') }}">
+</head>
+
+<body>
+
+<div class="page">
+
+    <div class="topbar">
+        <h1>Clinova</h1>
+        <a href="/pregnancy/{{ pregnancy['id'] }}">Back to Pregnancy</a>
+    </div>
+
+    <div class="card">
+
+        <h2>Add Pregnancy Medication</h2>
+
+        <form method="POST">
+
+            <label>Medicine Name</label>
+            <input type="text" name="medicine_name" required>
+
+            <label>Dosage</label>
+            <input type="text" name="dosage" placeholder="e.g. 500 mg">
+
+            <label>Frequency</label>
+            <input type="text" name="frequency" placeholder="e.g. Once daily">
+
+            <label>Start Date</label>
+            <input type="date" name="start_date">
+
+            <label>End Date</label>
+            <input type="date" name="end_date">
+
+            <label>Notes</label>
+            <textarea name="notes"></textarea>
+
+            <button type="submit">
+                Save Medication
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

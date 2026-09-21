@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Doctor Access Requests</title>
+</head>
+
+<body>
+
+    <h2>Doctor Dashboard</h2>
+
+    <p>
+        Welcome,
+        <strong>{{ doctor['name'] }}</strong>
+    </p>
+
+    <h3>Pending Record Access Requests</h3>
+
+    {% if requests|length == 0 %}
+
+        <p>No pending access requests.</p>
+
+    {% else %}
+
+        {% for req in requests %}
+
+            <div>
+
+                <p>
+                    <strong>Patient:</strong>
+                    {{ req['patient_name'] }}
+                </p>
+
+                <p>
+                    <strong>Requested Records:</strong>
+
+                    {% if req['prescriptions'] %}
+                        Prescriptions
+                    {% endif %}
+
+                    {% if req['lab_reports'] %}
+                        | Lab Reports
+                    {% endif %}
+
+                    {% if req['consultations'] %}
+                        | Consultations
+                    {% endif %}
+                </p>
+
+                <p>
+                    <strong>Requested on:</strong>
+                    {{ req['created_at'] }}
+                </p>
+
+                <a href="/approve_request/{{ req['id'] }}">
+                    Approve
+                </a>
+
+                &nbsp;
+
+                <a href="/deny_request/{{ req['id'] }}">
+                    Deny
+                </a>
+
+                <hr>
+
+            </div>
+
+        {% endfor %}
+
+    {% endif %}
+
+</body>
+</html>

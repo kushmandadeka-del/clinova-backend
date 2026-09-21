@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Request Medical Record Access</title>
+</head>
+
+<body>
+
+    <h2>Request Medical Record Access</h2>
+
+    <p>
+        Patient:
+        <strong>{{ patient['name'] }}</strong>
+    </p>
+
+    <p>
+        Patient ID:
+        <strong>{{ patient['id'] }}</strong>
+    </p>
+
+
+    <form method="POST">
+
+        <h3>Select Doctor</h3>
+
+        <select name="doctor_id" required>
+
+            <option value="">Select a Doctor</option>
+
+            {% for doctor in doctors %}
+
+                <option value="{{ doctor['id'] }}">
+                    {{ doctor['name'] }}
+                    - {{ doctor['specialization'] }}
+                    - {{ doctor['hospital'] }}
+                </option>
+
+            {% endfor %}
+
+        </select>
+
+
+        <h3>Select Records to Share</h3>
+
+        <label>
+            <input type="checkbox" name="prescriptions" value="1">
+            Prescriptions
+        </label>
+
+        <br>
+
+        <label>
+            <input type="checkbox" name="lab_reports" value="1">
+            Lab Reports
+        </label>
+
+        <br>
+
+        <label>
+            <input type="checkbox" name="consultations" value="1">
+            Consultations
+        </label>
+
+        <br><br>
+
+        <button type="submit">
+            Send Access Request
+        </button>
+
+    </form>
+
+</body>
+</html>

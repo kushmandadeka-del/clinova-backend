@@ -1,26 +1,219 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='talk.css') }}">
 
+    <title>Talk to your doctor</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='talk.css') }}">
 </head>
+
 <body>
+
     <div class="talk-section">
+
         <h1 id="talk-title">Talk to your doctor</h1>
-        <p id="talk-subtitle">Speak naturally — we'll turn your conversation into a clear record</p>
+
+        <p id="talk-subtitle">
+            Speak naturally — we'll turn your conversation into a clear record
+        </p>
+
+
+        <!-- Patient and Doctor -->
+
+        <div class="patient-doctor-box">
+
+            <h3>Consultation Details</h3>
+
+            <label for="patient-select">
+                Patient:
+            </label>
+
+            <select id="patient-select">
+
+                <option value="">
+                    Select Patient
+                </option>
+
+                {% for patient in patients %}
+
+                    <option value="{{ patient['id'] }}">
+                        {{ patient['name'] }} - {{ patient['phone'] }}
+                    </option>
+
+                {% endfor %}
+
+            </select>
+
+
+            <label for="doctor-select">
+                Doctor:
+            </label>
+
+            <select id="doctor-select">
+
+                <option value="">
+                    Select Doctor
+                </option>
+
+                {% for doctor in doctors %}
+
+                    <option value="{{ doctor['id'] }}">
+                        Dr. {{ doctor['name'] }} -
+                        {{ doctor['specialization'] }}
+                    </option>
+
+                {% endfor %}
+
+            </select>
+
+        </div>
+
+
+        <!-- Voice Recording -->
 
         <div class="mic-box">
-            <button id="mic-btn">🎤</button>
-            <p id="mic-status">Tap to start recording</p>
+
+            <label for="language-select">
+                Choose language:
+            </label>
+
+            <select id="language-select">
+
+                <option value="en-IN">
+                    English
+                </option>
+
+                <option value="hi-IN">
+                    Hindi
+                </option>
+
+                <option value="as-IN">
+                    Assamese
+                </option>
+
+                <option value="bn-IN">
+                    Bengali
+                </option>
+
+                <option value="ta-IN">
+                    Tamil
+                </option>
+
+                <option value="te-IN">
+                    Telugu
+                </option>
+
+            </select>
+
+
+            <button id="mic-btn">
+                🎤
+            </button>
+
+            <p id="mic-status">
+                Tap to start recording
+            </p>
+
         </div>
 
+
+        <!-- Original Transcript -->
+
         <div class="transcript-box">
-            <h3>Live transcript</h3>
-            <p id="transcript-text">Your conversation will appear here as you speak...</p>
+
+            <h3>
+                Live transcript
+            </h3>
+
+            <p id="transcript-text">
+                Your conversation will appear here as you speak...
+            </p>
+
         </div>
+
+
+        <!-- English Translation -->
+
+        <div class="translation-box">
+
+            <h3>
+                English Translation
+            </h3>
+
+            <p id="english-translation">
+                Translation will appear here...
+            </p>
+
+        </div>
+
+
+        <!-- Structured Case -->
+
+        <div class="case-box">
+
+            <h3>
+                Structured Case
+            </h3>
+
+            <p>
+                <strong>Symptoms:</strong>
+                <span id="symptoms">
+                    Not detected
+                </span>
+            </p>
+
+            <p>
+                <strong>Duration:</strong>
+                <span id="duration">
+                    Not detected
+                </span>
+            </p>
+
+            <p>
+                <strong>Medical History:</strong>
+                <span id="medical-history">
+                    Not detected
+                </span>
+            </p>
+
+            <p>
+                <strong>Medications:</strong>
+                <span id="medications">
+                    Not detected
+                </span>
+            </p>
+
+            <p>
+                <strong>Allergies:</strong>
+                <span id="allergies">
+                    Not detected
+                </span>
+            </p>
+
+        </div>
+
+
+        <!-- Submit Case -->
+
+        <div class="submit-box">
+
+            <button id="submit-case-btn" type="button">
+                Submit to Doctor
+            </button>
+
+            <p id="submit-status"></p>
+
+        </div>
+
     </div>
+
+
+    <script src="{{ url_for('static', filename='talk.js') }}"></script>
+
 </body>
+
 </html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hospital Registration - Clinova</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='pregnancy.css') }}">
+</head>
+
+<body>
+
+<div class="page">
+
+    <div class="topbar">
+        <h1>Clinova</h1>
+        <a href="/dashboard">Dashboard</a>
+    </div>
+
+    <div class="card">
+
+        <h2>Register Hospital</h2>
+        <p class="subtitle">
+            Add hospital facilities for pregnancy care and emergency referral.
+        </p>
+
+        <form method="POST">
+
+            <label>Hospital Name</label>
+            <input type="text" name="name" required>
+
+            <label>Address</label>
+            <input type="text" name="address" required>
+
+            <label>Phone</label>
+            <input type="text" name="phone" required>
+
+            <label>Approximate Distance from Referral Centre (km)</label>
+            <input type="number" name="distance_km" step="0.1" min="0" value="0">
+
+            <h3>Facilities</h3>
+
+            <div class="checkbox-group">
+
+                <label>
+                    <input type="checkbox" name="has_icu">
+                    ICU
+                </label>
+
+                <label>
+                    <input type="checkbox" name="has_nicu">
+                    NICU
+                </label>
+
+                <label>
+                    <input type="checkbox" name="has_obstetric_emergency">
+                    Obstetric Emergency Care
+                </label>
+
+                <label>
+                    <input type="checkbox" name="has_blood_bank">
+                    Blood Bank
+                </label>
+
+                <label>
+                    <input type="checkbox" name="ambulance_available">
+                    Ambulance Available
+                </label>
+
+            </div>
+
+            <label>Available ICU Beds</label>
+            <input type="number" name="available_icu_beds" min="0" value="0">
+
+            <label>Available NICU Beds</label>
+            <input type="number" name="available_nicu_beds" min="0" value="0">
+
+            <button type="submit">
+                Register Hospital
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

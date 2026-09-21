@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Pregnancy Checkup</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='pregnancy.css') }}">
+</head>
+
+<body>
+
+<div class="page">
+
+    <div class="topbar">
+        <h1>Clinova</h1>
+        <a href="/pregnancy/{{ pregnancy['id'] }}">Back to Pregnancy</a>
+    </div>
+
+    <div class="card">
+
+        <h2>Add Medical Checkup</h2>
+
+        <form method="POST">
+
+            <label>Checkup Date</label>
+            <input type="date" name="checkup_date" required>
+
+            <label>Pregnancy Week</label>
+            <input type="text" name="pregnancy_week">
+
+            <label>Blood Pressure</label>
+            <input type="text" name="blood_pressure" placeholder="e.g. 118/76">
+
+            <label>Weight</label>
+            <input type="text" name="weight" placeholder="e.g. 64 kg">
+
+            <label>Hemoglobin</label>
+            <input type="text" name="hemoglobin" placeholder="e.g. 11.2 g/dL">
+
+            <label>Blood Sugar</label>
+            <input type="text" name="blood_sugar">
+
+            <label>Ultrasound Report</label>
+            <textarea name="ultrasound_report"></textarea>
+
+            <label>Doctor Notes</label>
+            <textarea name="doctor_notes"></textarea>
+
+            <button type="submit">
+                Save Checkup
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>
