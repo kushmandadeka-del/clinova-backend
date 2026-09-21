@@ -1,0 +1,64 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Patient - Clinova</title>
+</head><body><h1>🚨 Emergency Patient</h1>
+
+<p>
+    Please provide the following information about the emergency.
+</p>
+
+<form method="POST">
+
+    <label>Emergency Type</label>
+    <br>
+
+    <select name="emergency_type" required>
+        <option value="">Select emergency type</option>
+        <option value="Medical Emergency">Medical Emergency</option>
+        <option value="Accident">Accident</option>
+        <option value="Breathing Difficulty">Breathing Difficulty</option>
+        <option value="Severe Pain">Severe Pain</option>
+        <option value="Pregnancy Emergency">Pregnancy Emergency</option>
+        <option value="Other">Other</option>
+    </select>
+
+    <br><br>
+
+    <label>Describe the Emergency</label>
+    <br>
+
+    <textarea
+        name="symptoms"
+        rows="5"
+        cols="40"
+        placeholder="Describe what is happening..."
+        required></textarea>
+
+    <br><br>
+
+    <label>Emergency Level</label>
+    <br>
+
+    <select name="severity" required>
+        <option value="">Select emergency level</option>
+        <option value="Critical">Critical</option>
+        <option value="Serious">Serious</option>
+        <option value="Urgent">Urgent</option>
+    </select>
+
+    <br><br>
+
+    <button type="submit">
+        🚨 Submit Emergency
+    </button>
+
+</form>
+
+<br>
+
+<a href="{{ url_for('emergency') }}">
+    ← Back to Emergency
+</a>
+
+</body></html>

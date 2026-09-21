@@ -31,12 +31,31 @@
                 <p id="contact-placeholder">Not added yet</p>
             </a>
         </div>
+          <div class="quick-actions">
 
-        <div class="quick-actions">
-            <a href="#" class="quick-action">Notify my doctor</a>
-            <a href="#" class="quick-action">Share my location</a>
-            <a href="#" class="quick-action">View my medical ID</a>
-        </div>
+    <a href="{{ url_for('emergency_patient')}}" class="quick-action">
+        🚨 I am an emergency patient
+    </a>
+
+    <a href="{{ url_for('emergency_referral_general') }}" class="quick-action">
+    🏥 Emergency Hospital Referral
+    </a>
+
+    <a href="#" class="quick-action">
+        Notify my doctor
+    </a>
+
+    <a href="#" class="quick-action">
+        Share my location
+    </a>
+
+    <a href="#" class="quick-action">
+        View my medical ID
+    </a>
+
+    
+
+</div>
     </div>
 </body>
 </html>

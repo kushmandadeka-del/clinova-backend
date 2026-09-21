@@ -188,6 +188,13 @@ def init_db():
         )
     """)
 
+    # Add ABHA ID column if it does not exist
+    columns = c.execute("PRAGMA table_info(patients)").fetchall()
+    column_names = [column["name"] for column in columns]
+
+    if "abha_id" not in column_names:
+        c.execute("ALTER TABLE patients ADD COLUMN abha_id TEXT")
+
     # Patients table
     c.execute("""
         CREATE TABLE IF NOT EXISTS patients (
@@ -472,20 +479,22 @@ def register_patient():
         age = request.form["age"]
         gender = request.form["gender"]
         phone = request.form["phone"]
+        abha_id = request.form.get("abha_id","").strip()
 
         conn = get_db()
 
         conn.execute(
             """
             INSERT INTO patients
-            (name, age, gender, phone, created_at)
-            VALUES (?, ?, ?, ?, ?)
+            (name, age, gender, phone, abha_id, created_at)
+            VALUES (?, ?, ?, ?, ?, ?)
             """,
             (
                 name,
                 age,
                 gender,
                 phone,
+                abha_id,
                 datetime.now().strftime("%Y-%m-%d %H:%M")
             )
         )
@@ -795,6 +804,57 @@ def language():
 @app.route("/emergency")
 def emergency():
     return render_template("emergency.html")
+
+@app.route("/emergency_patient", methods=["GET", "POST"])
+def emergency_patient():
+
+    if request.method == "POST":
+
+        emergency_type = request.form["emergency_type"]
+        symptoms = request.form["symptoms"]
+        severity = request.form["severity"]
+
+        return f"""
+        <h1>🚨 Emergency Submitted</h1>
+
+        <p><strong>Emergency Type:</strong> {emergency_type}</p>
+
+        <p><strong>Description:</strong> {symptoms}</p>
+
+        <p><strong>Emergency Level:</strong> {severity}</p>
+
+        <p>Please seek immediate medical assistance.</p>
+
+        <a href="/emergency">Back to Emergency</a>
+        """ 
+
+    return render_template("emergency_patient.html")
+
+
+@app.route("/emergency_referral_general", methods=["GET", "POST"])
+def emergency_referral_general():
+
+    if request.method == "POST":
+
+        emergency_type = request.form["emergency_type"]
+        required_facility = request.form["required_facility"]
+        emergency_level = request.form["emergency_level"]
+        description = request.form["description"]
+
+        return f"""
+        <h1>🏥 Emergency Referral Requested</h1>
+
+        <p><strong>Emergency Type:</strong> {emergency_type}</p>
+        <p><strong>Required Facility:</strong> {required_facility}</p>
+        <p><strong>Emergency Level:</strong> {emergency_level}</p>
+        <p><strong>Description:</strong> {description}</p>
+
+        <p>Your emergency referral request has been submitted.</p>
+
+        <a href="/emergency">Back to Emergency Care</a>
+        """
+
+    return render_template("emergency_referral_general.html")
 
 @app.route("/pharmacy")
 def pharmacy():
